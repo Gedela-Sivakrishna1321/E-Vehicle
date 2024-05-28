@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.card {
+  background-color: #f1f1f1;
+}
+
+.productsbg {
+  background-color: #e5e5e5;
+}
+
+.contactbg {
+  background-color: #1d2128;
+}
+
+.responsive {
+  position: relative;
+    padding-bottom: 75%; 
+    height: 0;
+    overflow: hidden;
+}
+
+.responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.google-map {
+  padding-bottom: 50%;
+  position: relative;
+}
+
+.google-map iframe {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+
+.customunderline {
+  position: relative;
+}
+
+.customunderline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  border-top: solid 3px red;
+  left: 0;
+  bottom: 0;
+  border-radius: 50%;
+  height: 8px;
+}
+
+.customunderline2 {
+  position: relative;
+}
+
+.customunderline2::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  border-top: solid 3px blue;
+  left: 0;
+  bottom: 0;
+  border-radius: 50%;
+  height: 8px;
+}
+
+/* .textWrap {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+} */
+
+.borderRadius {
+  border-top-left-radius: 4rem;
+  border-bottom-left-radius: 4rem;
+}
+
+.viewLabsbg {
+  background-color: #ff4040;
+}
+
+.viewLabsbg:hover {
+  background-color: black;
+  color: white;
+  transition: all ease-in-out 300ms ;
+}
+
+/* .carouselButton {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .carouselButton {
+    display: block;
+  }
+} */
