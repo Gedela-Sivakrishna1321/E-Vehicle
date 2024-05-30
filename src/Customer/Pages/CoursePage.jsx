@@ -4,6 +4,7 @@ import ElectricProfessionalCard from '../Components/ElectricProfessionalCard/Ele
 import { rolesData } from '../../Data/CoursesData';
 import CourseCard from '../Components/CourseCard/CourseCard';
 import { coursesData } from '../../Data/CoursesData';
+import ReachUs from '../Components/ReachUs/ReachUs';
 
 const CoursePage = () => {
   return (
@@ -11,7 +12,7 @@ const CoursePage = () => {
 
         {/* Who Should Take This Course */}
         <div className='my-10'>
-            <h1 className='text-2xl sm:text-4xl text-center'>Who should take this <b>Electric Vehicle Design Course?</b></h1>
+            <h1 className='text-2xl p-2 sm:text-4xl text-center'>Who should take this <b>Electric Vehicle Design Course?</b></h1>
             
             <div className='flex lg:mx-auto   items-center mx-6 max-w-6xl justify-between  rounded-2xl my-10 shadow-[0_3px_10px_rgb(0,0,0,0.2)]' >
                 
@@ -50,6 +51,9 @@ const CoursePage = () => {
         </div>
 
         {/* FAQ's */}
+
+        {/* Reach us */}
+        <ReachUs/>
 
     </div>
   )

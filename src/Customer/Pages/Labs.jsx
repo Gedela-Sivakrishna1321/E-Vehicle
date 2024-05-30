@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../../index.css";
 import LabCard from "../Components/LabCard/LabCard";
 import { labsData, labBenfits } from "../../Data/LabData";
+import ReachUs from "../Components/ReachUs/ReachUs";
 
 const Labs = () => {
   const [active, setActive] = useState("College");
@@ -81,7 +82,7 @@ const Labs = () => {
 
             <div className="lg:w-3/4">
               <p className="scale-150">★</p>
-              <p>Experienced instructors with deep industry insights..</p>
+              {/* <p>Experienced instructors with deep industry insights..</p> */}
             </div>
             <div className="lg:w-3/4">
               <p className="scale-150">★</p>
@@ -171,6 +172,10 @@ const Labs = () => {
       </div>
 
       {/* Gallery */}
+
+      {/* Reach Us */}
+      <ReachUs/>
+
     </div>
   );
 };

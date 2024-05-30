@@ -30,7 +30,7 @@ const Spares = () => {
 
       {/* Disclaimer */}
       <div>
-        <p className="text-sm lg:ml-20"> <span className="font-bold" >Note - </span>Product Quality varies according to the price</p>
+        <p className="text-sm m-6 sm:ml-10 lg:ml-20"> <span className="font-bold" >Note - </span>Product Quality varies according to the price</p>
       </div>
 
       {/* Reach Us */}

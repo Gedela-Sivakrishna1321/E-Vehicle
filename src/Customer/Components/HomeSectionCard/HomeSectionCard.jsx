@@ -27,7 +27,7 @@ const HomeSectionCard = ({ product }) => {
           />
         </div>
 
-        {pathname !== "/product" && (
+        {pathname === "/" && (
           <div className="w-full flex flex-col items-center justify-center">
 
             <p className="text-2xl font-bold">{product.name}</p>

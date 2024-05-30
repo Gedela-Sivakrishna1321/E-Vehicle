@@ -1,9 +1,13 @@
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+// import { IoMdCall } from "react-icons/io";
+// import "../../../index.css";
+// import Modal from "react-responsive-modal";
+// import "react-responsive-modal/styles.css";
 
 const navigation = {
   categories: [
@@ -82,10 +86,96 @@ function classNames(...classes) {
 }
 
 export default function Navigation() {
+  // const [openModal, setOpenModal] = useState(false);
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorE1] = useState(null);
   const navigate = useNavigate();
   const { pathname } = useLocation();
+
+  // const onOpenModal = () => setOpenModal(true);
+  // const onCloseModel = () => setOpenModal(false);
+
+  // To Manage Submit State
+  // const [loading, setLoading] = useState(false);
+  // const formRef = useRef(null)
+
+  // const enquiry_info =
+  //   pathname === "/product"
+  //     ? "Vehicle"
+  //     : pathname === "/courses"
+  //     ? "Course"
+  //     : pathname === "/lab-setup"
+  //     ? "Labs"
+  //     : "Spares"
+  // ;
+  // console.log("Enquiry Info ", enquiry_info);
+  // Handle Form State
+  // const [formData, setFormData] = useState({
+  //   Contact_Number : '',
+  //   Email : "",
+  //   // Enquiry : '',
+  //   Updates_On_Whatsapp : '',
+  // })
+
+  // const handleInputChange = (e) => {
+  //   const {name, value} = e.target;
+  //   setFormData({...formData, [name] : value});
+  // }
+
+  // const scriptUrl =
+  //   "https://script.google.com/macros/s/AKfycbw-ff2NFuERZtAwCX1jjgm6qDWnKBLiXu5C5cWItzXMU0JyfzSsL5aKHUb49BwyVtJx/exec";
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // console.log("Submitting Form On The way", formRef.current);
+  //   // setLoading(true);
+  //   console.log("Form Values ", formData);
+  //   const data = new FormData();
+  //   data.append("Contact_Number", formData.Contact_Number);
+  //   data.append("Email", formData.Email);
+  //   // data.append("Enquiry", enquiry_info);
+  //   data.append("Updates_On_Whatsapp", formData.Updates_On_Whatsapp);
+
+  //   fetch(scriptUrl, {
+  //     method: 'POST',
+  //     body: data,
+  //     // muteHttpExceptions: true,
+  // }).then(res => {
+  //         console.log("SUCCESSFULLY SUBMITTED")
+  //         setLoading(false);
+  //         alert("We will get back to you soon !");
+
+  //         setFormData({
+  //           Contact_Number : '',
+  //           Email : '',
+  //           Updates_On_Whatsapp : true,
+  //         })
+  //         onCloseModel();
+  //     })
+  //     .catch(err => console.log(err))
+  // }
+
+  // const handleSubmit = (e) => {
+  //   const formElem = document.querySelector("form");
+  //   e.preventDefault();
+  //   console.log("Submitted...   ");
+  //   const formData = new FormData(formElem);
+  //   fetch(
+  //     "https://script.google.com/macros/s/AKfycbzsVbJoODD1vTyyYHZDxSifa3HA6xN1BNANy-I3SIfXtIr2dO_pHL1j6k_s67ssRaqy/exec",
+  //     {
+  //       method: "POST",
+  //       body: formData,
+  //       mode : 'no-cors'
+  //     }
+  //   )
+  //     .then(() => {
+  //       console.log("Data Added to sheet successfully ");
+  //     })
+  //     .catch((error) => {
+  //       console.log("Error occured while submitting the data to sheet ", error);
+  //     });
+  //   onCloseModel();
+  // };
 
   return (
     <div className="bg-white">
@@ -175,6 +265,13 @@ export default function Navigation() {
                     >
                       Contact Us
                     </a>
+
+                    <a
+                      href="/dealership"
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 "
+                    >
+                      Dealership
+                    </a>
                   </div>
                 </div>
               </Dialog.Panel>
@@ -210,36 +307,134 @@ export default function Navigation() {
                   pathname != "/" ? "w-full" : "lg:w-max w-full"
                 }   items-center p-2`}
               >
-                <div className="flex space-x-2">
+                <div className="flex ">
                   <a href="/">
                     <span className="sr-only">Your Company</span>
-                    {/* <img
-                      className=" h-8 sm:h-12 w-auto"
-                      src="https://cutm.ac.in/wp-content/uploads/Centurion_University_of_Technology_and_Management_Logo.webp"
+                    <img
+                      className="h-[9rem] -ml-8 sm:h-[10rem] lg:h-[12rem]  w-auto"
+                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1716893212/E-vehicle/Logo/GT_E-mobility_origin_svlego.png"
                       alt=""
-                    /> */}
+                    />
                   </a>
-                  {pathname != "/" && (
-                    <p onClick={() => navigate("/")}
-                     className=" hidden lg:block lg:text-3xl lg:ml-3 cursor-pointer">
-                      GT E-Mobility
-                    </p>
-                  )}
                 </div>
 
-                {pathname === "/" && (
-                  <p className="text-base sm:text-2xl lg:text-3xl lg:ml-3 cursor-pointer">
-                    GT E-Mobility
-                  </p>
+                {/* {pathname !== "/" && (
+                  <div className="" onClick={onOpenModal}>
+                    <p
+                      className="callBackbg px-3 py-1 sm:px-6  sm:py-2 cursor-pointer text-white 
+                   font-semibold rounded-md sm:text-xl hover:opacity-90"
+                    >
+                      <IoMdCall className="inline scale-110" /> Request Callback{" "}
+                    </p>
+                  </div>
+
                 )}
 
-          {pathname !== "/" && pathname !== "/contact-us" &&     <Button
-                  className="text-xs  sm:text-sm font-medium text-gray-700 hover:text-gray-800"
-                  onClick={() => navigate("/contact-us")}
+                <Modal
+                  open={openModal}
+                  onClose={onCloseModel}
+                  center
+                  closeOnOverlayClick={false}
+                  classNames={""}
                 >
-                  Contact Us
-                </Button>}
+                  <form
+                    className="w-full max-w-sm p-5 form"
+                    onSubmit={handleSubmit}
+                  >
+                    <div className="md:flex md:items-center mb-6">
+                      <div className="md:w-1/3">
+                        <label
+                          className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                          htmlFor="inline-full-name"
+                        >
+                          Contact Number
+                        </label>
+                      </div>
+                      <div className="md:w-2/3">
+                        <input
+                          className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                          id="inline-full-name"
+                          type="number"
+                          placeholder="Enter your number"
+                          maxLength={10}
+                          name="Contact_Number"
+                        />
+                      </div>
+                    </div>
+                    <div className="md:flex md:items-center mb-6">
+                      <div className="md:w-1/3">
+                        <label
+                          className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                          htmlFor="inline-password"
+                        >
+                          Email
+                        </label>
+                      </div>
+                      <div className="md:w-2/3">
+                        <input
+                          className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                          id="inline-password"
+                          type="Email"
+                          name="Email"
+                          placeholder="Enter email"
+                          // onChange={handleInputChange}
+                        />
+                      </div>
+                    </div>
 
+                    {/* Enquiry About What ?? */}
+                    {/* <div className="md:flex md:items-center mb-6">
+                      <div className="md:w-1/3"></div>
+                      <label className="hidden md:w-2/3  text-gray-500 font-bold">
+                        <span className="text-sm">Enquiry</span>
+                        <input
+                          className="hidden mr-2 leading-tight"
+                          type="text"
+                          value={enquiry_info}
+                          name="Enquiry"
+                          onChange={handleInputChange}
+                        />
+                      </label>
+                    </div> */}
+
+                    {/* <div className="md:flex md:items-center mb-6">
+                      <div className="md:w-1/3"></div>
+                      <label className="md:w-2/3 block text-gray-500 font-bold">
+                        <input
+                          className="mr-2 leading-tight"
+                          type="checkbox"
+                          name="Updates_On_Whatsapp"
+                          // onChange={handleInputChange}
+                        />
+                        <span className="text-sm">
+                          Send me updates on Whatsapp
+                        </span>
+                      </label>
+                    </div>
+
+                    <div className="md:flex md:items-center">
+                      <div className="md:w-1/3"></div>
+                      <div className="md:w-2/3 ">
+                        <button
+                          value={loading ? "Loading..." : "Submitted"}
+                          className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                          type="submit"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                  // </Modal> */}
+
+               {pathname !== "/" && <Button
+                        className="text-xs border sm:text-sm font-medium text-gray-700 hover:text-gray-800"
+                        onClick={() => navigate("/contact-us")}
+                      >
+                        Contact Us
+                      </Button>}
+
+                  
               </div>
 
               {/* Flyout menus */}
@@ -274,6 +469,13 @@ export default function Navigation() {
                         onClick={() => navigate("/contact-us")}
                       >
                         Contact Us
+                      </Button>
+
+                      <Button
+                        className="text-xs sm:text-sm font-medium text-gray-700 hover:text-gray-800"
+                        onClick={() => navigate("/dealership")}
+                      >
+                        Dealership
                       </Button>
                     </div>
                   )}

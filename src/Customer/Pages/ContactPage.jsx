@@ -38,7 +38,7 @@ const ContactPage = () => {
           <div>
             <h1 className="font-bold uppercase text-lg mt-4">Email & Phone</h1>
             <p className="">Phone: +91 9439075789, 9668662707</p>
-            <p className="">Email: customerservice@centurion.co.in</p>
+            <p className="">Email: gtemobility.info@gmail.com</p>
             <p></p>
           </div>
         </div>

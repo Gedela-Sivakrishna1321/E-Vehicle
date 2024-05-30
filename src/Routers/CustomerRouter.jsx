@@ -8,6 +8,7 @@ import ContactPage from '../Customer/Pages/ContactPage'
 import Spares from '../Customer/Pages/Spares'
 import Labs from '../Customer/Pages/Labs'
 import CoursePage from '../Customer/Pages/CoursePage'
+import DealershipPage from '../Customer/Pages/DealershipPage'
 
 
 const CustomerRouter = () => {
@@ -25,6 +26,7 @@ const CustomerRouter = () => {
             <Route path='/spares' element={<Spares/>} />
             <Route path='/lab-setup' element={<Labs/>} />
             <Route path='/courses' element={<CoursePage/>} />
+            <Route path='/dealership' element={<DealershipPage/>} />
         </Routes>
 
 

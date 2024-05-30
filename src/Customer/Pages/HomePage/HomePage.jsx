@@ -15,6 +15,7 @@ const HomePage = () => {
             <HomeSectionCarousel   data={e_vehicles}/>
         </div>
 
+    
         
 
     </div>
