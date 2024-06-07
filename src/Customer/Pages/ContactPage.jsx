@@ -1,20 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../index.css";
+import Aos from 'aos';
+import 'aos/dist/aos.css'
+import { FiMapPin } from "react-icons/fi";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const ContactPage = () => {
+
+  React.useEffect(() => {
+    fetchContactData();
+    Aos.init({once : true});
+  }, [])
+
+
+  const [contactData, setContactData] = useState();
+
+  async function fetchContactData() {
+
+    const res = await fetch('https://script.google.com/macros/s/AKfycbxI-cslLCes1w3zzGuII1X60hb8VdVbI-Ut0IXKNAR0WcGUzRSC2aSTt9gWbg6KfEyS/exec?sheet=Contact_Details');
+
+    const data = await res.json();
+
+    setContactData(data);
+
+  }
+
   return (
-    <div>
+    <div
+     data-aos = "fade-up"
+     data-aos-duration="1500"
+     className="bg-black text-white pb-5"
+    >
       {/* Contact Heading */}
       <div className="text-5xl p-10 pt-24 pl-20  contactbg text-white">
         Contact Us
       </div>
 
       {/* Map Part */}
-      <div className="p-10  bg-black text-white flex justify-evenly shadow-sm ">
-        <div className="hidden lg:block">
+      <div className="p-10   flex justify-evenly shadow-sm ">
+       
+      {contactData &&  <div className="hidden lg:block">
           <div className="">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3776.798244533531!2d84.13569067394351!3d18.807142560360287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3cf98e2973372d%3A0x7604d36dacc3770e!2sR44Q%2BV82%2C%20Rajaseetapuram%2C%20Odisha%20761211!5e0!3m2!1sen!2sin!4v1716882249715!5m2!1sen!2sin"
+              src={`https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7553.596693821191!2d84.138266!3d18.807138!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3cf98e2973372d%3A0x7604d36dacc3770e!2sR44Q%2BV82%2C%20Rajaseetapuram%2C%20Odisha%20761211!5e0!3m2!1sen!2sin!4v1717746517184!5m2!1sen!2sin" width="600`}
               width="600"
               height="450"
               
@@ -23,7 +52,7 @@ const ContactPage = () => {
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-        </div>
+        </div>}
 
         {/* Contact Details  */}
         <div>
@@ -31,18 +60,34 @@ const ContactPage = () => {
             <h1 className="font-bold uppercase text-lg">
               Gram Tarang E-Mobility
             </h1>
-            <p className="font-light text-lg mt-3">Alurinagar, R. Sitapur</p>
-            <p className="font-light text-lg">Gajapati, Odisha, 761211</p>
+            {contactData ? <p className="font-light text-lg mt-3">{contactData[0].locality}</p> : <Skeleton/> }
+           {contactData ?  <p className="font-light text-lg">{contactData[0].district}, {contactData[0].state}, {contactData[0].pincode}</p> : <Skeleton/>}
           </div>
 
           <div>
             <h1 className="font-bold uppercase text-lg mt-4">Email & Phone</h1>
-            <p className="">Phone: +91 9439075789, 9668662707</p>
-            <p className="">Email: gtemobility.info@gmail.com</p>
+            {contactData ?  <p className="">Phone: +91 { contactData[0].phoneNumber1}, {contactData[0].phoneNumber2}</p> : <Skeleton/>}
+           {contactData ?  <p className="">Email: {contactData[0].email}</p> : <Skeleton/> }
             <p></p>
           </div>
+
+     
         </div>
+
       </div>
+
+       {contactData ? <div className="w-full text-center mx-auto lg:hidden block">
+            <a
+              href={`${contactData[0].location}`} target="_blank"
+            className="space-x-2 bg-slate-300 hover:cursor-pointer text-black px-4 py-2 rounded-md">
+            <img className="h-[22px] w-[22px] inline" 
+            src="https://res.cloudinary.com/dheuqshro/image/upload/v1717390714/Icons/google-maps_d2msmh.png" alt="" /> <span>Locate Us In Map</span> </a>
+          </div>
+        : 
+        <Skeleton/>  
+        }
+
+
     </div>
   );
 };

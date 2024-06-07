@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import '../../../index.css'
+import Aos from 'aos';
+import 'aos/dist/aos.css'
 
 const SpareCard = ({product}) => {
 
   const text = product.spec;
   const show = text.length > 18;
 
+  React.useEffect(() => {
+    Aos.init({once : true, duration : 1000});
+  }, [])
+
   return (
-    <div className=" mx-8 my-4 sm:mx-4  flex flex-col items-center justify-between bg-white hover:scale-110 transition-all duration-300  ease-in p-4 mt-10  rounded-xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-[0px_0px_95px_53px_#00000024] ">
+  
+
+    <div
+    data-aos = "zoom-in"
+    className=" mx-8 my-4 sm:mx-4  flex flex-col items-center justify-between bg-white hover:scale-110 transition-all duration-300  ease-in-out p-4 mt-10  rounded-xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] ">
       <div>
         <h1 className="text-gray-700 font-semibold text-2xl text-center  mt-1 w-40">
           {product.title}
@@ -45,6 +55,8 @@ const SpareCard = ({product}) => {
         </p>
       </div>
     </div>
+
+
   );
 };
 

@@ -4,6 +4,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import '../../../index.css'
 // import { IoMdCall } from "react-icons/io";
 // import "../../../index.css";
 // import Modal from "react-responsive-modal";
@@ -81,6 +82,39 @@ const navigation = {
   ],
 };
 
+const drawbarData = [
+  {
+    title : "Courses",
+    imageUrl : "https://res.cloudinary.com/dheuqshro/image/upload/v1717144263/E-vehicle/Icons/self-improvement_bxibmv.png",
+    href : "/courses"
+  },
+  
+  {
+    title : "Lab Setup",
+    imageUrl : "https://res.cloudinary.com/dheuqshro/image/upload/v1717144263/E-vehicle/Icons/lab_gfpufp.png",
+    href : "/lab-setup"
+  },
+
+  {
+    title : "Spares",
+    imageUrl : "https://res.cloudinary.com/dheuqshro/image/upload/v1717144264/E-vehicle/Icons/tyre_kbailj.png",
+    href : "/spares"
+  },
+
+  {
+    title : "Contact Us",
+    imageUrl : "https://res.cloudinary.com/dheuqshro/image/upload/v1717144264/E-vehicle/Icons/phone_xzkpfe.png",
+    href : "/contact-us"
+  },
+
+  {
+    title : "Dealership",
+    imageUrl : "https://res.cloudinary.com/dheuqshro/image/upload/v1717144264/E-vehicle/Icons/dealership_eusdeh.png",
+    href : "/dealership"
+  },
+
+]
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -91,91 +125,6 @@ export default function Navigation() {
   const [anchorEl, setAnchorE1] = useState(null);
   const navigate = useNavigate();
   const { pathname } = useLocation();
-
-  // const onOpenModal = () => setOpenModal(true);
-  // const onCloseModel = () => setOpenModal(false);
-
-  // To Manage Submit State
-  // const [loading, setLoading] = useState(false);
-  // const formRef = useRef(null)
-
-  // const enquiry_info =
-  //   pathname === "/product"
-  //     ? "Vehicle"
-  //     : pathname === "/courses"
-  //     ? "Course"
-  //     : pathname === "/lab-setup"
-  //     ? "Labs"
-  //     : "Spares"
-  // ;
-  // console.log("Enquiry Info ", enquiry_info);
-  // Handle Form State
-  // const [formData, setFormData] = useState({
-  //   Contact_Number : '',
-  //   Email : "",
-  //   // Enquiry : '',
-  //   Updates_On_Whatsapp : '',
-  // })
-
-  // const handleInputChange = (e) => {
-  //   const {name, value} = e.target;
-  //   setFormData({...formData, [name] : value});
-  // }
-
-  // const scriptUrl =
-  //   "https://script.google.com/macros/s/AKfycbw-ff2NFuERZtAwCX1jjgm6qDWnKBLiXu5C5cWItzXMU0JyfzSsL5aKHUb49BwyVtJx/exec";
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // console.log("Submitting Form On The way", formRef.current);
-  //   // setLoading(true);
-  //   console.log("Form Values ", formData);
-  //   const data = new FormData();
-  //   data.append("Contact_Number", formData.Contact_Number);
-  //   data.append("Email", formData.Email);
-  //   // data.append("Enquiry", enquiry_info);
-  //   data.append("Updates_On_Whatsapp", formData.Updates_On_Whatsapp);
-
-  //   fetch(scriptUrl, {
-  //     method: 'POST',
-  //     body: data,
-  //     // muteHttpExceptions: true,
-  // }).then(res => {
-  //         console.log("SUCCESSFULLY SUBMITTED")
-  //         setLoading(false);
-  //         alert("We will get back to you soon !");
-
-  //         setFormData({
-  //           Contact_Number : '',
-  //           Email : '',
-  //           Updates_On_Whatsapp : true,
-  //         })
-  //         onCloseModel();
-  //     })
-  //     .catch(err => console.log(err))
-  // }
-
-  // const handleSubmit = (e) => {
-  //   const formElem = document.querySelector("form");
-  //   e.preventDefault();
-  //   console.log("Submitted...   ");
-  //   const formData = new FormData(formElem);
-  //   fetch(
-  //     "https://script.google.com/macros/s/AKfycbzsVbJoODD1vTyyYHZDxSifa3HA6xN1BNANy-I3SIfXtIr2dO_pHL1j6k_s67ssRaqy/exec",
-  //     {
-  //       method: "POST",
-  //       body: formData,
-  //       mode : 'no-cors'
-  //     }
-  //   )
-  //     .then(() => {
-  //       console.log("Data Added to sheet successfully ");
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error occured while submitting the data to sheet ", error);
-  //     });
-  //   onCloseModel();
-  // };
 
   return (
     <div className="bg-white">
@@ -204,8 +153,8 @@ export default function Navigation() {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
-                <div className="flex px-4 pb-2 pt-5">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto drawbarBg pb-12 shadow-xl">
+                <div className="flex justify-end px-4 pb-2 pt-5">
                   <button
                     type="button"
                     className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
@@ -239,37 +188,53 @@ export default function Navigation() {
                  
                 </Tab.Group> */}
 
-                <div className="space-y-6 border  px-4 py-6">
-                  <div className="flow-root cursor-pointer">
+                <div className="space-y-6 border border-t  px-4 py-6">
+                  <div className=" cursor-pointer text-xl space-y-7 ">
+                    
                     <a
                       href="/courses"
-                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900  "
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight   "
                     >
-                      Courses
+                     <img
+                     className="h-[2rem] inline mx-4 "
+                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144263/E-vehicle/Icons/self-improvement_bxibmv.png" alt="" />
+                       Courses
                     </a>
                     <a
                       href="/lab-setup"
-                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 "
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight "
                     >
+                      <img
+                      className="h-[2rem] inline mx-4 " 
+                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144263/E-vehicle/Icons/lab_gfpufp.png" alt="" />
                       Lab Setup
                     </a>
                     <a
                       href="/spares"
-                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 "
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight "
                     >
+                      <img 
+                      className="h-[2rem] inline mx-4 "
+                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144264/E-vehicle/Icons/tyre_kbailj.png" alt="" />
                       Spares
                     </a>
                     <a
                       href="/contact-us"
-                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 "
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight"
                     >
+                      <img 
+                      className="h-[2rem] inline mx-4 "
+                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144264/E-vehicle/Icons/phone_xzkpfe.png" alt="" />
                       Contact Us
                     </a>
 
                     <a
                       href="/dealership"
-                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 "
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight"
                     >
+                      <img 
+                      className="h-[2rem] inline mx-4 "
+                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144264/E-vehicle/Icons/dealership_eusdeh.png" alt="" />
                       Dealership
                     </a>
                   </div>
@@ -303,9 +268,8 @@ export default function Navigation() {
 
               {/* Logo */}
               <div
-                className={`flex justify-between  ${
-                  pathname != "/" ? "w-full" : "lg:w-max w-full"
-                }   items-center p-2`}
+                className={`flex justify-between  lg:w-max w-full
+                  items-center p-2`}
               >
                 <div className="flex ">
                   <a href="/">
@@ -318,122 +282,7 @@ export default function Navigation() {
                   </a>
                 </div>
 
-                {/* {pathname !== "/" && (
-                  <div className="" onClick={onOpenModal}>
-                    <p
-                      className="callBackbg px-3 py-1 sm:px-6  sm:py-2 cursor-pointer text-white 
-                   font-semibold rounded-md sm:text-xl hover:opacity-90"
-                    >
-                      <IoMdCall className="inline scale-110" /> Request Callback{" "}
-                    </p>
-                  </div>
-
-                )}
-
-                <Modal
-                  open={openModal}
-                  onClose={onCloseModel}
-                  center
-                  closeOnOverlayClick={false}
-                  classNames={""}
-                >
-                  <form
-                    className="w-full max-w-sm p-5 form"
-                    onSubmit={handleSubmit}
-                  >
-                    <div className="md:flex md:items-center mb-6">
-                      <div className="md:w-1/3">
-                        <label
-                          className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                          htmlFor="inline-full-name"
-                        >
-                          Contact Number
-                        </label>
-                      </div>
-                      <div className="md:w-2/3">
-                        <input
-                          className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                          id="inline-full-name"
-                          type="number"
-                          placeholder="Enter your number"
-                          maxLength={10}
-                          name="Contact_Number"
-                        />
-                      </div>
-                    </div>
-                    <div className="md:flex md:items-center mb-6">
-                      <div className="md:w-1/3">
-                        <label
-                          className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                          htmlFor="inline-password"
-                        >
-                          Email
-                        </label>
-                      </div>
-                      <div className="md:w-2/3">
-                        <input
-                          className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                          id="inline-password"
-                          type="Email"
-                          name="Email"
-                          placeholder="Enter email"
-                          // onChange={handleInputChange}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Enquiry About What ?? */}
-                    {/* <div className="md:flex md:items-center mb-6">
-                      <div className="md:w-1/3"></div>
-                      <label className="hidden md:w-2/3  text-gray-500 font-bold">
-                        <span className="text-sm">Enquiry</span>
-                        <input
-                          className="hidden mr-2 leading-tight"
-                          type="text"
-                          value={enquiry_info}
-                          name="Enquiry"
-                          onChange={handleInputChange}
-                        />
-                      </label>
-                    </div> */}
-
-                    {/* <div className="md:flex md:items-center mb-6">
-                      <div className="md:w-1/3"></div>
-                      <label className="md:w-2/3 block text-gray-500 font-bold">
-                        <input
-                          className="mr-2 leading-tight"
-                          type="checkbox"
-                          name="Updates_On_Whatsapp"
-                          // onChange={handleInputChange}
-                        />
-                        <span className="text-sm">
-                          Send me updates on Whatsapp
-                        </span>
-                      </label>
-                    </div>
-
-                    <div className="md:flex md:items-center">
-                      <div className="md:w-1/3"></div>
-                      <div className="md:w-2/3 ">
-                        <button
-                          value={loading ? "Loading..." : "Submitted"}
-                          className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                          type="submit"
-                        >
-                          Submit
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                  // </Modal> */}
-
-               {pathname !== "/" && <Button
-                        className="text-xs border sm:text-sm font-medium text-gray-700 hover:text-gray-800"
-                        onClick={() => navigate("/contact-us")}
-                      >
-                        Contact Us
-                      </Button>}
-
+               
                   
               </div>
 
@@ -442,43 +291,44 @@ export default function Navigation() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-4">
-                  {pathname === "/" && (
+                  
                     <div>
-                      <Button
+                      {pathname !== "/courses" && <Button
                         className="text-xs sm:text-2xl font-medium text-gray-700 hover:text-gray-800"
                         onClick={() => navigate("/courses")}
                       >
                         Courses
-                      </Button>
+                      </Button>}
 
-                      <Button
+                  {pathname !== "/lab-setup" &&    <Button
                         className="text-xs sm:text-sm font-medium text-gray-700 hover:text-gray-800"
                         onClick={() => navigate("/lab-setup")}
                       >
                         Lab Setup
-                      </Button>
-                      <Button
+                      </Button>}
+
+                      {pathname !== "/spares" &&  <Button
                         className="text-xs sm:text-sm font-medium text-gray-700 hover:text-gray-800"
                         onClick={() => navigate("/spares")}
                       >
                         Spares
-                      </Button>
+                      </Button>}
 
-                      <Button
+              {pathname !== "/contact-us" &&        <Button
                         className="text-xs sm:text-sm font-medium text-gray-700 hover:text-gray-800"
                         onClick={() => navigate("/contact-us")}
                       >
                         Contact Us
-                      </Button>
+                      </Button>}
 
-                      <Button
+            {pathname !== "/dealership" &&          <Button
                         className="text-xs sm:text-sm font-medium text-gray-700 hover:text-gray-800"
                         onClick={() => navigate("/dealership")}
                       >
                         Dealership
-                      </Button>
+                      </Button>}
                     </div>
-                  )}
+                  
                 </div>
               </div>
             </div>

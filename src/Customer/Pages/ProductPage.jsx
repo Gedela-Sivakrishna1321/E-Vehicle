@@ -1,29 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import HomeSectionCarousel from "../Components/HomeSectionCarousel/HomeSectionCarousel";
 import { e_vehicles } from "../../Data/E_vehicles";
 import ProductTable from "../Components/ProductTable/ProductTable";
 import ReachUs from "../Components/ReachUs/ReachUs";
+import '../../index.css'
+import EmbedVideo from "../Components/EmbedVideo/EmbedVideo";
+import { VariableIcon } from "@heroicons/react/24/outline";
 
 const ProductPage = () => {
+
+  useEffect(() => {
+    fetchE_VehiclesData();
+  }, [])
+
+  const [vehiclesData, setVehiclesData] = useState();
+
+  async function fetchE_VehiclesData() {
+
+    const res = await fetch('https://script.google.com/macros/s/AKfycbxI-cslLCes1w3zzGuII1X60hb8VdVbI-Ut0IXKNAR0WcGUzRSC2aSTt9gWbg6KfEyS/exec?sheet=E_Vehicles');
+
+    const data = await res.json();
+
+    setVehiclesData(data);
+
+  }
+
+
+  var data = [];
+
+  vehiclesData?.map((item) => {
+    const object = {};
+    object.name = item.name;
+    object.urls = item.imageUrls.replace(/"/g, '').split(" ");
+    data.push(object);
+  })
+
+  // console.log("New Data Object = ", data);
+
+
   const [activeTab, setActiveTab] = useState(
     localStorage.getItem("checkProduct")
   );
-  console.log("Active Tab - ", activeTab);
-  const data = e_vehicles.filter((item) => item.name === activeTab)[0]
-    .products[0].Urls;
-  // console.log("Data -- ", data);
-  const tabs = [
-    { name: "4 Wheeler Buggy" },
-    { name: "Goods Carrier" },
-    { name: "Passenger" },
-    { name: "Loader Van" },
-    { name: "Food Van" },
-    { name: "Garbage Van" },
-    { name: "Exihibition Van" },
-    { name: "Ambulance" },
-    { name: "School Van" },
-  ];
+
+  // console.log("Active Tab - ", activeTab);
+
+  const CarouselData = data?.filter((item) => item.name === activeTab);
+  
+  // console.log("CarouselData = ", CarouselData);
+  const tabs = data?.map((item) => item.name);
+
+  // console.log("Tabs2 Data ", tabs);
 
   return (
     <div>
@@ -37,17 +64,17 @@ const ProductPage = () => {
         <div className="flex flex-col lg:flex-row lg:justify-between lg:px-6 box-border items-center space-y-8    ">
 
           <div className=" pt-12 text-lg flex flex-col items-center ">
-            <div className="flex flex-wrap items-center  space-x-2 space-y-2 lg:flex-col lg:items-start ">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-10 lg:grid-cols-1 lg:gap-5  md:grid-cols-4 lg:flex-col  ">
               {tabs.map((item) => (
                 <span
-                  className={`text-lg w-max cursor-pointer p-2  rounded-md border border-slate-500 ${
-                    activeTab === item.name
+                  className={`text-lg flex justify-center items-center btnShake text-center min-w-full cursor-pointer p-2  rounded-md border border-slate-500 ${
+                    activeTab === item
                       ? " bg-yellow-300  font-medium"
                       : ""
                   }`}
-                  onClick={() => setActiveTab(item.name)}
+                  onClick={() => setActiveTab(item)}
                 >
-                  {item.name}
+                  {item}
                 </span>
               ))}
             </div>
@@ -61,7 +88,9 @@ const ProductPage = () => {
 
             
             <div className="" >
-              <HomeSectionCarousel data={data} />
+          
+               <HomeSectionCarousel data={CarouselData} />
+              
             </div>
             
 
@@ -76,6 +105,12 @@ const ProductPage = () => {
         <div className="pb-4">
           <ProductTable activeTab={activeTab} />
         </div>
+      </div>
+
+      {/* Play Review Videos */}
+      <div className="my-5 p-5 w-full" >
+        <h1 className="text-xl font-medium sm:text-2xl lg:text-3xl">Checkout our video collection</h1>
+        <EmbedVideo/>
       </div>
 
       {/* Reach Us */}
