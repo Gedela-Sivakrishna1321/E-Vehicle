@@ -10,6 +10,8 @@ import Aos from 'aos';
 import 'aos/dist/aos.css'
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
+import { Oval } from 'react-loader-spinner';
+import Loader from '../Loader/Loader';
 
 
 export default function ProductTable({activeTab}) {
@@ -76,7 +78,9 @@ export default function ProductTable({activeTab}) {
     const rows = vehiclesData?.filter((item) => item.name === activeTab)[0]?.specs;
     // console.log("Rows Data - ", rows);
   return (
-    <TableContainer
+    <div>
+
+ {rows ?    <TableContainer
     data-aos="flip-left"
     component={Paper} className='p-2 md:max-w-6xl'>
       <Table  size="medium" aria-label="a dense table"   >
@@ -87,7 +91,7 @@ export default function ProductTable({activeTab}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows?.map((row) => (
+          { rows?.map((row) => (
             <TableRow
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -95,13 +99,21 @@ export default function ProductTable({activeTab}) {
                <TableCell component="th" scope="row" sx={{fontSize : '1.15rem'}}>
                 {row.key  }
               </TableCell>
-              <TableCell align="left" sx={{fontSize : '1.05rem'}}>{row.value }</TableCell>
+
+              <TableCell align="left" sx={{fontSize : '1.05rem'}}>{row.value.toString().replace(/"/g, '') }</TableCell>
             
             </TableRow>
-          ))}
+          )) 
+        }
         </TableBody>
       </Table>
-    </TableContainer>
+    </TableContainer> : 
+
+      <Loader/>
+    
+    }
+
+    </div>
   );
 }
 

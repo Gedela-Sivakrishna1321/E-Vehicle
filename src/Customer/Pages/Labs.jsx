@@ -5,6 +5,7 @@ import { labsData, labBenfits } from "../../Data/LabData";
 import ReachUs from "../Components/ReachUs/ReachUs";
 import Aos from 'aos';
 import 'aos/dist/aos.css'
+import Loader from "../Components/Loader/Loader";
 
 const Labs = () => {
 
@@ -105,14 +106,18 @@ const Labs = () => {
           </p>
         </div>
 
-        <div className="w-full rounded-3xl space-y-10">
+       {labsData ?  <div className="w-full rounded-3xl space-y-10">
           {
           labData?.map((data) => (
   
             <LabCard  labData={data} />
           ))
           }
-        </div>
+        </div> : 
+
+          <Loader/>
+        }
+
       </div>
 
       {/* Key Features */}

@@ -12,6 +12,8 @@ import HomeSectionCard from "../Components/HomeSectionCard/HomeSectionCard";
 import ReachUs from "../Components/ReachUs/ReachUs";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { ColorRing, Oval } from "react-loader-spinner";
+import Loader from "../Components/Loader/Loader";
 
 var pdfLink = "";
 
@@ -26,7 +28,6 @@ const DealershipPage = () => {
     Aos.init({ once: true });
   }, []);
 
-  
   const [deliverablesData, setDeliverablesData] = useState();
   const [promotionData, setPromotionData] = useState();
   const [perksData, setPerksData] = useState();
@@ -102,29 +103,28 @@ const DealershipPage = () => {
         return result;
       }, {});
     };
-    
-  
+
     // // Debug: Ensure data is not null or undefined
     if (!data || data.length === 0) {
-      throw new Error('Input data is null, undefined, or empty.');
+      throw new Error("Input data is null, undefined, or empty.");
     }
-    
-    const groupedData = groupBy(data, 'vehicleType');
-    
-    pdfLink = groupedData['Passenger'][0].pdf;
+
+    const groupedData = groupBy(data, "vehicleType");
+
+    pdfLink = groupedData["Passenger"][0].pdf;
 
     // // Debug: Log the grouped data to check its structure
-    console.log('Grouped Data:', JSON.stringify(groupedData, null, 2));
-    
-    const transformedData = Object.keys(groupedData).map(vehicleType => ({
+    console.log("Grouped Data:", JSON.stringify(groupedData, null, 2));
+
+    const transformedData = Object.keys(groupedData).map((vehicleType) => ({
       vehicleType: vehicleType,
       models: groupedData[vehicleType].map(({ index, title, imageUrl }) => ({
-        index: index.replace(/"/g, ''), // Remove quotes from index
+        index: index.replace(/"/g, ""), // Remove quotes from index
         title: title,
-        imageUrl: imageUrl.replace(/"/g, ''),
-      }))
+        imageUrl: imageUrl.replace(/"/g, ""),
+      })),
     }));
-    
+
     // // Debug: Log the transformed data to check its structure
     // console.log('Transformed Data:', transformedData[0].pdf);
     console.log("Pdf Link = ", pdfLink);
@@ -144,14 +144,12 @@ const DealershipPage = () => {
     return obj;
   });
 
- 
-
   // console.log("Promotion Data = ", promotionData);
   // console.log("Perks Data = ", perksData);
   // console.log("Terms And Conditions = ", termsAndConditionsData);
   // console.log("Documents Required = ", documentsRequiredData);
   // console.log("Passenger Models = ", passengerModels);
-      // console.log("Dealership pdf = ", dealershipVehicles[0].pdf)
+  // console.log("Dealership pdf = ", dealershipVehicles[0].pdf)
 
   return (
     <div>
@@ -161,41 +159,47 @@ const DealershipPage = () => {
           Details Of Deliverables
         </h1>
 
-        <div className="sm:grid mx-auto sm:grid-cols-2 sm:gap-1 md:p-4 md:gap-1  lg:grid-cols-3">
-          {newData?.map((item) => (
-            <div
-              data-aos="zoom-in"
-              className="sm:max-w-sm w-full flex flex-col items-center space-y-3 my-5   p-3 rounded-md shadow-md border border-t-orange-500 border-t-2"
-            >
-              <div>
-                <h1 className="font-semibold">Item Type</h1>
-                <p>{item.itemType}</p>
-              </div>
-
-              <div className="flex space-x-20 justify-between ">
+        {newData ? (
+          <div className="sm:grid mx-auto sm:grid-cols-2 sm:gap-1 md:p-4 md:gap-1  lg:grid-cols-3">
+            {newData?.map((item) => (
+              <div
+                data-aos="zoom-in"
+                className="sm:max-w-sm w-full flex flex-col items-center space-y-3 my-5   p-3 rounded-md shadow-md border border-t-orange-500 border-t-2"
+              >
                 <div>
-                  <h1 className="font-semibold">Item Description</h1>
-                  <div className="px-4">
-                    <ol className="list-decimal ">
-                      {item?.itemDescription.map((info) => (
-                        <li>{info.replace(/"/g, "")}</li>
-                      ))}
-                    </ol>
-                  </div>
+                  <h1 className="font-semibold">Item Type</h1>
+                  <p>{item.itemType}</p>
                 </div>
 
-                <div>
-                  <h1 className="font-semibold">Quantity</h1>
+                <div className="flex space-x-20 justify-between ">
                   <div>
-                    {item.quantity.map((quant) => (
-                      <p>{quant.replace(/"/g, "")}</p>
-                    ))}
+                    <h1 className="font-semibold">Item Description</h1>
+                    <div className="px-4">
+                      <ol className="list-decimal ">
+                        {item?.itemDescription.map((info) => (
+                          <li>{info.replace(/"/g, "")}</li>
+                        ))}
+                      </ol>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h1 className="font-semibold">Quantity</h1>
+                    <div>
+                      {item.quantity.map((quant) => (
+                        <p>{quant.replace(/"/g, "")}</p>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          
+          <Loader/>
+
+        )}
 
         <div className="text-center">
           <p>
@@ -213,13 +217,17 @@ const DealershipPage = () => {
           BY GT E-Mobility
         </h1>
 
-        <div className="mt-5">
-          <ul className="list-disc mx-4 space-y-2 sm:text-lg">
-            {promotionData?.map((item) => (
-              <li>{item.promotionPlan}</li>
-            ))}
-          </ul>
-        </div>
+        {promotionData ? (
+          <div className="mt-5">
+            <ul className="list-disc mx-4 space-y-2 sm:text-lg">
+              {promotionData?.map((item) => (
+                <li>{item.promotionPlan}</li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <Loader/>
+        )}
       </div>
 
       {/* Perks */}
@@ -229,13 +237,17 @@ const DealershipPage = () => {
           DEALERSHIPS
         </h1>
 
-        <div className="mt-5">
-          <ul className="list-disc mx-4 space-y-2 sm:text-lg">
-            {perksData?.map((item) => (
-              <li>{item.perks}</li>
-            ))}
-          </ul>
-        </div>
+        {perksData ? (
+          <div className="mt-5">
+            <ul className="list-disc mx-4 space-y-2 sm:text-lg">
+              {perksData?.map((item) => (
+                <li>{item.perks}</li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <Loader/>
+        )}
       </div>
 
       {/* Vehicle Details */}
@@ -243,41 +255,46 @@ const DealershipPage = () => {
         <h1 className="font-PaytoneOne text-xl sm:text-2xl">
           Vehicle Types and Models{" "}
         </h1>
-        <div className="my-10 space-y-5  ">
-          {dealershipVehicles?.map((item) => (
-            <div className="border p-5  ">
-              <h1 className="text-center font-PaytoneOne text-lg sm:text-2xl ">
-                {item.vehicleType} Model
-              </h1>
 
-              <div className="space-y-8 mt-6 md:grid md:grid-cols-2 justify-center items-center">
-                {item.models.map((model) => (
-                  <div className="space-y-2 md:space-y-0">
-                    <h1 className="text-red-500 font-bold sm:text-xl">
-                      {" "}
-                      <span className="font-bold text-black ">
-                        {model.index}{" "}
-                      </span>{" "}
-                      <span className="ml-10">{model.title}</span>{" "}
-                    </h1>
-                    <HomeSectionCard product={model} />
-                  </div>
-                ))}
+        {dealershipVehicles ? (
+          <div className="my-10 space-y-5  ">
+            {dealershipVehicles?.map((item) => (
+              <div className="border p-5  ">
+                <h1 className="text-center font-PaytoneOne text-lg sm:text-2xl ">
+                  {item.vehicleType} Model
+                </h1>
+
+                <div className="space-y-8 mt-6 md:grid md:grid-cols-2 justify-center items-center">
+                  {item.models.map((model) => (
+                    <div className="space-y-2 md:space-y-0">
+                      <h1 className="text-red-500 font-bold sm:text-xl">
+                        {" "}
+                        <span className="font-bold text-black ">
+                          {model.index}{" "}
+                        </span>{" "}
+                        <span className="ml-10">{model.title}</span>{" "}
+                      </h1>
+                      <HomeSectionCard product={model} />
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <Loader/>
+        )}
+
         <p className="my-2 text-sm">
           <b>Note : </b> Price of vehicle varies accrding to the specifications{" "}
         </p>
-       {pdfLink && <p className="px-4 py-2 w-max transition-all duration-300 ease-in text-white bg-blue-600 rounded-md text-lg my-4 cursor-pointer hover:scale-95">
-          <a
-            target="_blank"
-            href={`${pdfLink}`}
-          >
-            Checkout Specifications
-          </a>
-        </p>}
+        {pdfLink && (
+          <p className="px-4 py-2 w-max transition-all duration-300 ease-in text-white bg-blue-600 rounded-md text-lg my-4 cursor-pointer hover:scale-95">
+            <a target="_blank" href={`${pdfLink}`}>
+              Checkout Specifications
+            </a>
+          </p>
+        )}
       </div>
       {/*  */}
       {/* Terms & Conditions */}
@@ -287,13 +304,15 @@ const DealershipPage = () => {
           DEALERSHIP OF GT E-Mobility
         </h1>
 
-        <div className="mt-5">
+       {termsAndConditions ?  <div className="mt-5">
           <ul className="list-decimal mx-4 space-y-2 sm:text-lg">
             {termsAndConditionsData?.map((item) => (
               <li>{item.termsAndConditions}</li>
             ))}
           </ul>
-        </div>
+        </div> : 
+        <Loader/>
+        }
       </div>
 
       {/* Documents Required */}
@@ -303,7 +322,7 @@ const DealershipPage = () => {
           Documents Required from Dealer:
         </h1>
 
-        <div
+       {documentsRequired ?  <div
           // data-aos-duration = "1000"
           className="mt-5"
         >
@@ -312,9 +331,11 @@ const DealershipPage = () => {
               <li>{item.documentsRequired}</li>
             ))}
           </ul>
-        </div>
-      </div>
+        </div> : 
+        <Loader/>
+        }
 
+      </div> 
       {/* Reach Us */}
       <ReachUs />
     </div>

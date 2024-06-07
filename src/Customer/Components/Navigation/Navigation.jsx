@@ -154,10 +154,10 @@ export default function Navigation() {
               leaveTo="-translate-x-full"
             >
               <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto drawbarBg pb-12 shadow-xl">
-                <div className="flex justify-end px-4 pb-2 pt-5">
+                <div className="flex justify-end px-4 pb-2 pt-5 noSelect">
                   <button
                     type="button"
-                    className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                    className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 "
                     onClick={() => setOpen(false)}
                   >
                     <span className="absolute -inset-0.5" />
@@ -188,12 +188,12 @@ export default function Navigation() {
                  
                 </Tab.Group> */}
 
-                <div className="space-y-6 border border-t  px-4 py-6">
+                <div className="space-y-6 border border-t  px-4 py-6 noSelect">
                   <div className=" cursor-pointer text-xl space-y-7 ">
                     
                     <a
                       href="/courses"
-                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight   "
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900  noSelect  "
                     >
                      <img
                      className="h-[2rem] inline mx-4 "
@@ -202,7 +202,7 @@ export default function Navigation() {
                     </a>
                     <a
                       href="/lab-setup"
-                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight "
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight noSelect "
                     >
                       <img
                       className="h-[2rem] inline mx-4 " 
@@ -211,7 +211,7 @@ export default function Navigation() {
                     </a>
                     <a
                       href="/spares"
-                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight "
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight noSelect"
                     >
                       <img 
                       className="h-[2rem] inline mx-4 "
@@ -220,7 +220,7 @@ export default function Navigation() {
                     </a>
                     <a
                       href="/contact-us"
-                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight"
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight noSelect"
                     >
                       <img 
                       className="h-[2rem] inline mx-4 "
@@ -230,7 +230,7 @@ export default function Navigation() {
 
                     <a
                       href="/dealership"
-                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight"
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight noSelect"
                     >
                       <img 
                       className="h-[2rem] inline mx-4 "
@@ -252,7 +252,7 @@ export default function Navigation() {
           className="mx-auto w-full border-b border-gray-200"
         >
           <div className="  w-full ">
-            <div className="flex h-16 items-center">
+            <div className="flex h-16 items-center noSelect">
               <button
                 type="button"
                 className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
@@ -271,7 +271,7 @@ export default function Navigation() {
                 className={`flex justify-between  lg:w-max w-full
                   items-center p-2`}
               >
-                <div className="flex ">
+                <div className="flex removeBlueHighlight ">
                   <a href="/">
                     <span className="sr-only">Your Company</span>
                     <img

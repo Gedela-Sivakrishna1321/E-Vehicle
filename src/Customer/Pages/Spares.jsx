@@ -4,6 +4,7 @@ import { SpareParts } from "../../Data/SpareParts";
 import ReachUs from "../Components/ReachUs/ReachUs";
 import Aos from 'aos';
 import 'aos/dist/aos.css'
+import Loader from "../Components/Loader/Loader";
 
 const Spares = () => {
 
@@ -64,13 +65,15 @@ const Spares = () => {
       </div>
 
       {/* Items Shown  */}
-      <div
+    {sparesData ?   <div
       data-aos = "zoom-in"
        className="grid xs:gridcols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 mx-auto max-w-6xl gap-x-2  space-y-10  my-10">
         {sparesData?.map((item) => (
           <SpareCard product={item} />
         ))}
-      </div>
+      </div> : 
+      <Loader/>
+      }
 
       {/* Disclaimer */}
       <div>

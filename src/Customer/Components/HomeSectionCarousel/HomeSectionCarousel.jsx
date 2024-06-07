@@ -10,6 +10,7 @@ import Aos from 'aos'
 import 'aos/dist/aos.css';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { Oval } from 'react-loader-spinner'
 
 
 
@@ -61,7 +62,7 @@ const HomeSectionCarousel = ({data}) => {
         
         <div className=' p-5 sm:py-10 lg:py-20  lg:px-10 box-border '>
 
-        <div className={`${pathname === '/product' ? "lg:w-[80%]" : "border" } hidden lg:block`}>
+      {data ?   <div className={`${pathname === '/product' ? "lg:w-[80%]" : "border" } hidden lg:block`}>
             {/* <h1 className='font-extrabold text-2xl text-gray-800 px-4 py-5'>{sectionName}</h1> */}
             {/* Past Styling -  ${pathname === '/product' ? "md:h-[80vh] p-3" : card*/}
             
@@ -94,11 +95,25 @@ const HomeSectionCarousel = ({data}) => {
 
             
 
+        </div> : 
+
+        <div className="w-full flex justify-center my-5">
+        <Oval
+        visible={true}
+        height="40"
+        width="40"
+        color="#0CAFFF"
+        ariaLabel="oval-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        />
         </div>
+
+        }
 
         
         
-             <div 
+           {data ?   <div 
       
                 className='  gap-y-5 lg:hidden mb-4 grid grid-cols-1 md:grid-cols-2' >
         
@@ -124,6 +139,19 @@ const HomeSectionCarousel = ({data}) => {
                         }
         
                 </div>
+                :
+                <div className="w-full flex justify-center my-5">
+                <Oval
+                  visible={true}
+                  height="40"
+                  width="40"
+                  color="#0CAFFF"
+                  ariaLabel="oval-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                />
+              </div>    
+            }
         
 
        

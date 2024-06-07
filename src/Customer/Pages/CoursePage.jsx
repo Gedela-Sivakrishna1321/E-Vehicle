@@ -7,6 +7,7 @@ import { coursesData } from '../../Data/CoursesData';
 import ReachUs from '../Components/ReachUs/ReachUs';
 import Aos from 'aos';
 import 'aos/dist/aos.css'
+import Loader from '../Components/Loader/Loader';
 
 const CoursePage = () => {
 
@@ -110,10 +111,12 @@ const CoursePage = () => {
         </div>
 
         {/* Course and Syllabus */}
-        <div className='bg-green-50' >
+       {courseData ?  <div className='bg-green-50' >
             {courseData?.map((course) => <CourseCard course={course} /> )}
             
-        </div>
+        </div> : 
+        <Loader/>
+        }
 
         {/* FAQ's */}
 
