@@ -33,7 +33,7 @@ const EmbedVideo =  () => {
 
   return (
     
-    <div className="mt-10">
+    <div className="mt-10 mb-5">
        <div
         
         className=" mx-auto flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-6 "
