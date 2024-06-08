@@ -183,7 +183,7 @@ const DealershipPage = () => {
                     </div>
                   </div>
 
-                  <div>
+                  <div className="flex flex-col items-center pr-2">
                     <h1 className="font-semibold">Quantity</h1>
                     <div>
                       {item.quantity.map((quant) => (
