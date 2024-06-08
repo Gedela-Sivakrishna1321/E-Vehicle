@@ -190,7 +190,8 @@ export default function Navigation() {
 
                 <div className="space-y-6 border border-t  px-4 py-6 noSelect">
                   <div className=" cursor-pointer text-xl space-y-7 ">
-                    
+                  
+                  {/* Courses */}
                     <a
                       href="/courses"
                       className="-m-2 block p-2 sm:text-lg font-medium text-gray-900  noSelect  "
@@ -200,6 +201,19 @@ export default function Navigation() {
                       src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144263/E-vehicle/Icons/self-improvement_bxibmv.png" alt="" />
                        Courses
                     </a>
+
+                  {/* Dealership */}
+                    <a
+                      href="/dealership"
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight noSelect"
+                    >
+                      <img 
+                      className="h-[2rem] inline mx-4 "
+                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144264/E-vehicle/Icons/dealership_eusdeh.png" alt="" />
+                      Dealership
+                    </a>
+                    
+                    {/* Lab Setup */}
                     <a
                       href="/lab-setup"
                       className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight noSelect "
@@ -207,8 +221,10 @@ export default function Navigation() {
                       <img
                       className="h-[2rem] inline mx-4 " 
                       src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144263/E-vehicle/Icons/lab_gfpufp.png" alt="" />
-                      Lab Setup
+                      Laboratory Setup
                     </a>
+
+                  {/* Spares */}
                     <a
                       href="/spares"
                       className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight noSelect"
@@ -218,6 +234,19 @@ export default function Navigation() {
                       src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144264/E-vehicle/Icons/tyre_kbailj.png" alt="" />
                       Spares
                     </a>
+
+                  {/* Gallery */}
+                    <a
+                      href="/gallery"
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight noSelect"
+                    >
+                      <img 
+                      className="h-[2rem] inline mx-4 "
+                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717777199/E-vehicle/Icons/gallery_uifmpj.png" alt="" />
+                      Gallery
+                    </a>
+
+                  {/* Contact Us */}
                     <a
                       href="/contact-us"
                       className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight noSelect"
@@ -228,15 +257,7 @@ export default function Navigation() {
                       Contact Us
                     </a>
 
-                    <a
-                      href="/dealership"
-                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight noSelect"
-                    >
-                      <img 
-                      className="h-[2rem] inline mx-4 "
-                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144264/E-vehicle/Icons/dealership_eusdeh.png" alt="" />
-                      Dealership
-                    </a>
+
                   </div>
                 </div>
               </Dialog.Panel>
@@ -304,7 +325,7 @@ export default function Navigation() {
                         className="text-xs sm:text-sm font-medium text-gray-700 hover:text-gray-800"
                         onClick={() => navigate("/lab-setup")}
                       >
-                        Lab Setup
+                        Laboratory Setup
                       </Button>}
 
                       {pathname !== "/spares" &&  <Button
@@ -314,12 +335,6 @@ export default function Navigation() {
                         Spares
                       </Button>}
 
-              {pathname !== "/contact-us" &&        <Button
-                        className="text-xs sm:text-sm font-medium text-gray-700 hover:text-gray-800"
-                        onClick={() => navigate("/contact-us")}
-                      >
-                        Contact Us
-                      </Button>}
 
             {pathname !== "/dealership" &&          <Button
                         className="text-xs sm:text-sm font-medium text-gray-700 hover:text-gray-800"
@@ -327,6 +342,21 @@ export default function Navigation() {
                       >
                         Dealership
                       </Button>}
+
+            {pathname !== "/gallery" &&          <Button
+                        className="text-xs sm:text-sm font-medium text-gray-700 hover:text-gray-800"
+                        onClick={() => navigate("/gallery")}
+                      >
+                        Gallery
+                      </Button>}
+
+              {pathname !== "/contact-us" &&        <Button
+                        className="text-xs sm:text-sm font-medium text-gray-700 hover:text-gray-800"
+                        onClick={() => navigate("/contact-us")}
+                      >
+                        Contact Us
+                      </Button>}
+
                     </div>
                   
                 </div>

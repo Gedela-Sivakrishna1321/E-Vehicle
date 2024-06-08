@@ -77,7 +77,7 @@ const Labs = () => {
         <div className="flex flex-col justify-center items-start space-y-14   px-5">
           <h1 className="font-PaytoneOne text-4xl sm:text-5xl ">
             Electric Vehicle{" "}
-            <span className="customunderline2 ">Lab Set-up </span>at your
+            <span className="customunderline2 ">Laboratory</span> Set-up at your
             college
           </h1>
 

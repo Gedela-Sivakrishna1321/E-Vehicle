@@ -9,6 +9,7 @@ import Spares from '../Customer/Pages/Spares'
 import Labs from '../Customer/Pages/Labs'
 import CoursePage from '../Customer/Pages/CoursePage'
 import DealershipPage from '../Customer/Pages/DealershipPage'
+import Gallery from '../Customer/Pages/Gallery'
 
 const Footer = lazy(() => import('../Customer/Components/Footer/Footer'))
 
@@ -29,6 +30,7 @@ const CustomerRouter = () => {
             <Route path='/lab-setup' element={<Labs/>} />
             <Route path='/courses' element={<CoursePage/>} />
             <Route path='/dealership' element={<DealershipPage/>} />
+            <Route path='/gallery' element={<Gallery/>} />
         </Routes>
 
 

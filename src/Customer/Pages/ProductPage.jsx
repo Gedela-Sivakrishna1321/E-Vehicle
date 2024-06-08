@@ -115,14 +115,6 @@ const ProductPage = () => {
         </div>
       </div>
 
-      {/* Play Review Videos */}
-      <div className="my-5 p-5 w-full">
-        <h1 className="text-xl font-medium sm:text-2xl lg:text-3xl">
-          Checkout our video collection
-        </h1>
-        <EmbedVideo />
-      </div>
-
       {/* Reach Us */}
       <ReachUs />
     </div>

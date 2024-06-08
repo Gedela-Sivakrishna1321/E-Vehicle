@@ -5,6 +5,7 @@ import "aos/dist/aos.css";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Oval } from "react-loader-spinner";
+import Loader from "../Loader/Loader";
 
 const EmbedVideo =  () => {
 
@@ -32,15 +33,17 @@ const EmbedVideo =  () => {
 
   return (
     
-    <div className="mt-5">
-     {youtubeLinksData ?  <div
-        data-aos="fade-up"
+    <div className="mt-10">
+       <div
+        
         className=" mx-auto flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-6 "
       >
         {
-          
+          youtubeLinksData ? 
         
         youtubeLinksData?.map((data) => (
+
+          <div data-aos="fade-up">
 
             <iframe
               width="300"
@@ -53,26 +56,20 @@ const EmbedVideo =  () => {
               referrerpolicy="strict-origin-when-cross-origin"
               allowFullScreen
             ></iframe>
+
+          </div>
           
         ))
 
+        : 
+
+        <Loader/>
+
   
       } 
-      </div> : 
+      </div>
 
-       <div className="w-full flex justify-center my-5">
-       <Oval
-         visible={true}
-         height="40"
-         width="40"
-         color="#0CAFFF"
-         ariaLabel="oval-loading"
-         wrapperStyle={{}}
-         wrapperClass=""
-       />
-     </div>
-
-      }
+      
     </div>
   );
 };
