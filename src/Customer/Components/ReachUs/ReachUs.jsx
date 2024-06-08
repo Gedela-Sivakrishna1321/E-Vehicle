@@ -75,7 +75,7 @@ const ReachUs = () => {
           <div className="flex justify-center my-3" >
                       <a href='https://forms.gle/cdY7pErDE2RTG8mb6' target='_blank'
                         className="callBackbg px-3 py-1 sm:px-6  sm:py-2 cursor-pointer text-white 
-                     font-semibold rounded-md sm:text-xl hover:opacity-90 w-max  "
+                     font-semibold text-lg rounded-md sm:text-xl hover:opacity-90 w-max  "
                       >
                         <IoMdCall className="inline scale-110 " /> Request Callback{" "}
                       </a>

@@ -121,21 +121,13 @@ const Labs = () => {
       </div>
 
       {/* Key Features */}
-      <div data-aos = "zoom-in"
+    { keyFeatures ?   <div data-aos = "zoom-in"
        className="w-full py-[5%] px-[6%]">
         <h1 className="text-4xl sm:text-5xl text-red-500 font-bold text-center">
           Key Features of our Labs:
         </h1>
 
         <div className="w-full flex flex-col lg:flex-row lg:justify-around space-y-10 items-center  pt-10 px-10 text-center">
-          {/* Middle Gif part */}
-          {/* <div className="w-1/3 flex justify-center items-center scale-110">
-            <img
-              className="scale-150"
-              src="https://static.wixstatic.com/media/fe5d12_9b4e4158611844949353104db2499720~mv2.gif"
-              alt=""
-            />
-          </div> */}
 
           <div className="lg:w-1/3 space-y-10">
             
@@ -149,30 +141,16 @@ const Labs = () => {
             </div>
 
             )}
-
-            {/* <div className="lg:w-3/4">
-              {/* <p className="scale-150">★</p> */}
-              {/* <p>Experienced instructors with deep industry insights..</p> */}
-            {/* </div> */}
-            {/* <div className="lg:w-3/4">
-              <p className="scale-150">★</p>
-              <p>
-                A focus on sustainable solutions and eco-friendly practices.
-              </p>
-            </div>
-
-            <div className="lg:w-3/4">
-              <p className="scale-150">★</p>
-              <p>Comprehensive support for students' career journeys.</p>
-            </div> */} 
           
           </div>
 
         </div>
-      </div>
+      </div> : 
+        (<Loader/>)
+      }
 
       {/* Key Benfits */}
-      <div 
+     {collegeBenfits && studentBenfits ?  <div 
       data-aos = "fade-up"
       className="w-full">
         {/* Heading */}
@@ -238,9 +216,9 @@ const Labs = () => {
             )}
           </div>
         </div>
-      </div>
-
-      {/* Gallery */}
+      </div> : 
+      (<Loader/>)
+      }
 
       {/* Reach Us */}
       <ReachUs/>

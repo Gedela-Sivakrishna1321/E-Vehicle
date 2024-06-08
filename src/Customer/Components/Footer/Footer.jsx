@@ -40,7 +40,7 @@ const Footer = () => {
        { contactData ?
         <a href={`https://wa.me/91${contactData[0].whatsappNumber}`} target="_blank">
           <img
-            className="h-[2rem] ml-4 sm:h-[2.25rem] md:h-[2.5rem] lg:h-[3rem]"
+            className="h-[2.15rem] ml-4 sm:h-[2.25rem] md:h-[2.5rem] lg:h-[3rem]"
             src="https://res.cloudinary.com/dheuqshro/image/upload/v1717170343/Icons/Chat_Button_g6ugmf.png"
             alt="Chat on WhatsApp"
           />

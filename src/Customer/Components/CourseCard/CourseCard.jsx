@@ -15,6 +15,7 @@ const CourseCard = ({ course }) => {
 
   return (
     <div data-aos = "fade-right"
+          data-aos-duration={1000}
      className="py-10 mx-6">
       <div className="text-2xl sm:text-4xl flex flex-col items-center p-3 py-4">
         <h1 className="">

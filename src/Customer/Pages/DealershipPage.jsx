@@ -154,12 +154,12 @@ const DealershipPage = () => {
   return (
     <div>
       {/* Deliverables */}
-      <div className="w-full p-4 shadow-lg bg-slate-100 ">
+    {newData ?   <div className="w-full p-4 shadow-lg bg-slate-100 ">
         <h1 className="text-xl md:text-2xl text-center font-PaytoneOne">
           Details Of Deliverables
         </h1>
 
-        {newData ? (
+        { (
           <div className="sm:grid mx-auto sm:grid-cols-2 sm:gap-1 md:p-4 md:gap-1  lg:grid-cols-3">
             {newData?.map((item) => (
               <div
@@ -168,7 +168,7 @@ const DealershipPage = () => {
               >
                 <div>
                   <h1 className="font-semibold">Item Type</h1>
-                  <p>{item.itemType}</p>
+                  <p className="font-PaytoneOne">{item.itemType}</p>
                 </div>
 
                 <div className="flex space-x-20 justify-between ">
@@ -195,11 +195,7 @@ const DealershipPage = () => {
               </div>
             ))}
           </div>
-        ) : (
-          
-          <Loader/>
-
-        )}
+        ) }
 
         <div className="text-center">
           <p>
@@ -208,7 +204,11 @@ const DealershipPage = () => {
           </p>
           <p>TOTAL SPACE REQUIRED: 1000 sq. ft.</p>
         </div>
-      </div>
+        
+      </div> : 
+      
+      (<Loader/>)
+      }
 
       {/* Promotion */}
       <div data-aos="fade-right" className="p-5 my-10">
