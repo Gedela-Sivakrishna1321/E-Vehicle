@@ -292,7 +292,7 @@ export default function Navigation() {
                 className={`flex justify-between  lg:w-max w-full
                   items-center p-2`}
               >
-                <div className="flex removeBlueHighlight ">
+                <div className="flex removeBlueHighlight cursor-pointer">
                   <span onClick={() => navigate("/")}>
                     <span className="sr-only">Your Company</span>
                     <img
