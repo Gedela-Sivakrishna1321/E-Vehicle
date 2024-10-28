@@ -293,14 +293,14 @@ export default function Navigation() {
                   items-center p-2`}
               >
                 <div className="flex removeBlueHighlight ">
-                  <a href="/">
+                  <span onClick={() => navigate("/")}>
                     <span className="sr-only">Your Company</span>
                     <img
                       className="h-[9rem] -ml-8 sm:h-[10rem] lg:h-[12rem]  w-auto"
                       src="https://res.cloudinary.com/dheuqshro/image/upload/v1716893212/E-vehicle/Logo/GT_E-mobility_origin_svlego.png"
                       alt=""
                     />
-                  </a>
+                  </span>
                 </div>
 
                
