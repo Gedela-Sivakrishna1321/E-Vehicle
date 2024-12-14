@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import '../../../index.css'
 import Aos from 'aos';
 import 'aos/dist/aos.css'
+import { useNavigate } from "react-router-dom";
 
 const SpareCard = ({product}) => {
 
   const text = product.spec;
   const show = text.length > 18;
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     Aos.init({once : true, duration : 1000});
   }, [])
+
+  function handleClick() {
+    navigate("/contact-us")
+}
 
   return (
   
@@ -53,6 +59,8 @@ const SpareCard = ({product}) => {
         <p>
         <span className="text-gray-700 font-bold">Price</span> : <span className="text-green-600 font-semibold"> ₹{product.startPrice} - ₹{product.endPrice}</span>
         </p>
+        <button onClick={handleClick}
+         className='bg-black px-7 py-3 opacity-70 text-center text-white rounded-full m-3 transition-all duration-300 ease-in-out'>Contact Us</button>
       </div>
     </div>
 

@@ -28,8 +28,10 @@ const MainCarousel = () => {
 
     const items = MainCarouselData.map((item) => <img src={item.imageUrl} className='cursor-pointer' />)
     return (
-        <div     className="w-full flex justify-center items-center">
-          
+        <div    
+        onClick={() => window.open("https://forms.gle/cdY7pErDE2RTG8mb6", "_blank")}
+          className="w-full flex justify-center items-center">
+                
                 <AliceCarousel
                     disableButtonsControls
                     items={items}

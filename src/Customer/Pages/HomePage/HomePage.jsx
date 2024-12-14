@@ -38,7 +38,7 @@ const HomePage = () => {
     data.push(object);
   })
 
-  // console.log("New Data Object = ", data);
+  console.log("New Data Object = ", data);
 
   
   return (
