@@ -41,7 +41,7 @@ const Footer = () => {
         <a href={`https://wa.me/91${contactData[0].whatsappNumber}`} target="_blank">
           <img
             className="h-[2.15rem] ml-4 sm:h-[2.25rem] md:h-[2.5rem] lg:h-[3rem]"
-            src="https://res.cloudinary.com/dheuqshro/image/upload/v1717170343/Icons/Chat_Button_g6ugmf.png"
+            src="https://res.cloudinary.com/dxorxllhb/image/upload/v1734330814/Chat_Button_g6ugmf_gomh5d.png"
             alt="Chat on WhatsApp"
           />
         </a>
@@ -67,7 +67,7 @@ const Footer = () => {
                 >
                   <img
                     className="w-[32px] h-[32px] cursor-pointer "
-                    src="https://res.cloudinary.com/dheuqshro/image/upload/v1715357464/Icons/facebook_xvsb2n.png"
+                    src="https://res.cloudinary.com/dxorxllhb/image/upload/v1734330826/facebook_xvsb2n_ltudgf.png"
                     alt=""
                   />
                 </a>}
@@ -75,7 +75,7 @@ const Footer = () => {
                {contactData && <a href={`${contactData[0].youtube}`} target="_blank">
                   <img
                     className="w-[32px] h-[32px] cursor-pointer"
-                    src="https://res.cloudinary.com/dheuqshro/image/upload/v1715357464/Icons/youtube_pizkbr.png"
+                    src="https://res.cloudinary.com/dxorxllhb/image/upload/v1734330812/youtube_pizkbr_zcnzgd.png"
                     alt=""
                   />
                 </a>}
@@ -86,7 +86,7 @@ const Footer = () => {
                 >
                   <img
                     className="w-[32px] h-[32px] cursor-pointer"
-                    src="https://res.cloudinary.com/dheuqshro/image/upload/v1715357465/Icons/linkedin_vdyews.png"
+                    src="https://res.cloudinary.com/dxorxllhb/image/upload/v1734330831/linkedin_vdyews_brer7o.png"
                     alt=""
                   />
                 </a>}
@@ -97,7 +97,7 @@ const Footer = () => {
                 >
                   <img
                     className="w-[32px] h-[32px] cursor-pointer"
-                    src="https://res.cloudinary.com/dheuqshro/image/upload/v1715357465/Icons/instagram_f0gcea.png"
+                    src="https://res.cloudinary.com/dxorxllhb/image/upload/v1734330829/instagram_f0gcea_buydtm.png"
                     alt=""
                   />
                 </a>}

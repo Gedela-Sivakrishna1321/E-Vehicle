@@ -81,7 +81,7 @@ const ContactPage = () => {
               href={`${contactData[0].location}`} target="_blank"
             className="space-x-2 bg-slate-300 hover:cursor-pointer text-black px-4 py-2 rounded-md">
             <img className="h-[22px] w-[22px] inline" 
-            src="https://res.cloudinary.com/dheuqshro/image/upload/v1717390714/Icons/google-maps_d2msmh.png" alt="" /> <span>Locate Us In Map</span> </a>
+            src="https://res.cloudinary.com/dxorxllhb/image/upload/v1734330827/google-maps_d2msmh_vipcha.png" alt="" /> <span>Locate Us In Map</span> </a>
           </div>
         : 
         <Skeleton/>  

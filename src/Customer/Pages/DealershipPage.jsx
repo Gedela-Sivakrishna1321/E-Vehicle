@@ -290,7 +290,7 @@ const DealershipPage = () => {
         </p>
         {pdfLink && (
           <p className="px-4 py-2 w-max transition-all duration-300 ease-in text-white bg-blue-600 rounded-md text-lg my-4 cursor-pointer hover:scale-95">
-            <a target="_blank" href={`${pdfLink}`}>
+            <a target="_blank" href={'https://drive.google.com/file/d/1Z2c6cOgLvd6PclQkgU4VCRe39vmfraB9/view?usp=sharing'}>
               Checkout Specifications
             </a>
           </p>

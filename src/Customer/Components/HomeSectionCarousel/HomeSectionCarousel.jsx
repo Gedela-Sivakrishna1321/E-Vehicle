@@ -30,6 +30,10 @@ const HomeSectionCarousel = ({data}) => {
         720: { items: 1 },
         1024: { items: 1 }
     };
+
+    useEffect(()=>{
+        setActiveIndex(0);
+    },[data])
         
     // console.log("Data in HomeSectionCarousel -- ", data);
 

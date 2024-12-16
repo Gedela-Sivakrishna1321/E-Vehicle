@@ -198,7 +198,7 @@ export default function Navigation() {
                     >
                      <img
                      className="h-[2rem] inline mx-4 "
-                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144263/E-vehicle/Icons/self-improvement_bxibmv.png" alt="" />
+                      src="https://res.cloudinary.com/dxorxllhb/image/upload/v1734323839/self-improvement_bxibmv_qqvnrx.png" alt="" />
                        Courses
                     </a>
 
@@ -209,7 +209,7 @@ export default function Navigation() {
                     >
                       <img 
                       className="h-[2rem] inline mx-4 "
-                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144264/E-vehicle/Icons/dealership_eusdeh.png" alt="" />
+                      src="https://res.cloudinary.com/dxorxllhb/image/upload/v1734323838/dealership_eusdeh_z95rxk.png" alt="" />
                       Dealership
                     </a>
                     
@@ -220,7 +220,7 @@ export default function Navigation() {
                     >
                       <img
                       className="h-[2rem] inline mx-4 " 
-                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144263/E-vehicle/Icons/lab_gfpufp.png" alt="" />
+                      src="https://res.cloudinary.com/dxorxllhb/image/upload/v1734323839/lab_gfpufp_xyf9ld.png" alt="" />
                       Laboratory Setup
                     </a>
 
@@ -231,7 +231,7 @@ export default function Navigation() {
                     >
                       <img 
                       className="h-[2rem] inline mx-4 "
-                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144264/E-vehicle/Icons/tyre_kbailj.png" alt="" />
+                      src="https://res.cloudinary.com/dxorxllhb/image/upload/v1734323839/tyre_kbailj_snk7x3.png" alt="" />
                       Spares
                     </a>
 
@@ -242,7 +242,7 @@ export default function Navigation() {
                     >
                       <img 
                       className="h-[2rem] inline mx-4 "
-                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717777199/E-vehicle/Icons/gallery_uifmpj.png" alt="" />
+                      src="https://res.cloudinary.com/dxorxllhb/image/upload/v1734323839/gallery_uifmpj_rkunua.png" alt="" />
                       Gallery
                     </a>
 
@@ -253,7 +253,7 @@ export default function Navigation() {
                     >
                       <img 
                       className="h-[2rem] inline mx-4 "
-                      src="https://res.cloudinary.com/dheuqshro/image/upload/v1717144264/E-vehicle/Icons/phone_xzkpfe.png" alt="" />
+                      src="https://res.cloudinary.com/dxorxllhb/image/upload/v1734323839/phone_xzkpfe_nil0bu.png" alt="" />
                       Contact Us
                     </a>
 
