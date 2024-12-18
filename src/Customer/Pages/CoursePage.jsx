@@ -11,12 +11,15 @@ import Loader from '../Components/Loader/Loader';
 
 const CoursePage = () => {
 
+    const [courseData, setCourseData] = useState();
+
     useEffect(() => {
-        fetchCourseData();
+        if(!courseData) {
+            fetchCourseData();
+        }
         Aos.init({once : true, duration : 2000});
       }, [])
 
-      const [courseData, setCourseData] = useState();
 
       async function fetchCourseData() {
 

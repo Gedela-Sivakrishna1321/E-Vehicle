@@ -18,15 +18,6 @@ import Loader from "../Components/Loader/Loader";
 var pdfLink = "";
 
 const DealershipPage = () => {
-  React.useEffect(() => {
-    fetchDeliverables();
-    fetchPromotionDetails();
-    fetchPerks();
-    fetchTermsAndConditions();
-    fetchDocumentsRequired();
-    fetchDealershipVehicles();
-    Aos.init({ once: true });
-  }, []);
 
   const [deliverablesData, setDeliverablesData] = useState();
   const [promotionData, setPromotionData] = useState();
@@ -34,6 +25,29 @@ const DealershipPage = () => {
   const [termsAndConditionsData, setTermsAndConditionsData] = useState();
   const [documentsRequiredData, setDocumentsRequiredData] = useState();
   const [dealershipVehicles, setDealershipVehicles] = useState();
+
+  React.useEffect(() => {
+    if(!deliverablesData) {
+      fetchDeliverables();
+    }
+    if(!promotionData) {
+      fetchPromotionDetails();
+    }
+    if(!perksData) {
+      fetchPerks();
+    }
+    if(!termsAndConditionsData) {
+      fetchTermsAndConditions();
+    }
+    if(!documentsRequiredData) {
+      fetchDocumentsRequired();
+    }
+    if(!dealershipVehicles) {
+      fetchDealershipVehicles();
+    }
+    Aos.init({ once: true });
+  }, []);
+
 
   async function fetchDeliverables() {
     const res = await fetch(

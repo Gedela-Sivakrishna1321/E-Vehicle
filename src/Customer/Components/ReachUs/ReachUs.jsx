@@ -9,12 +9,15 @@ import Loader from '../Loader/Loader';
 
 const ReachUs = () => {
 
+  const [contactData, setContactData] = useState();
+
   useEffect(() => {
-    fetchContactData();
+    if(!contactData) {
+      fetchContactData();
+    }
     Aos.init();
   }, [])
 
-  const [contactData, setContactData] = useState();
 
   async function fetchContactData() {
 

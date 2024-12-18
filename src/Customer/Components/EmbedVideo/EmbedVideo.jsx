@@ -12,7 +12,9 @@ const EmbedVideo =  () => {
   const [youtubeLinksData, setYoutubeLinksData] = useState();
 
   useEffect(() => {
-    getData();
+    if(!youtubeLinksData) {
+      getData();
+    }
     Aos.init({ duration: 2000 });
   }, []);
 

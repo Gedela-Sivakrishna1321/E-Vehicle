@@ -8,14 +8,19 @@ import Loader from "../Components/Loader/Loader";
 
 const Spares = () => {
 
+  const [sparesData, setSparesData] = useState();
+  const [spareBannerImage, setSpareBannerImage] = useState();
+
   React.useEffect(() => {
-    fetchSparesData();
-    fetchSpareBannerData();
+    if(!sparesData) {
+      fetchSparesData();
+    }
+    if(!spareBannerImage) {
+      fetchSpareBannerData();
+    }
     Aos.init({once : true, duration : 1000});
   }, [])
 
-  const [sparesData, setSparesData] = useState();
-  const [spareBannerImage, setSpareBannerImage] = useState();
 
   async function fetchSparesData() {
 

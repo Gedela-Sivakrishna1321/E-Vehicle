@@ -8,13 +8,16 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 const ContactPage = () => {
 
+  const [contactData, setContactData] = useState();
+
   React.useEffect(() => {
-    fetchContactData();
+    if(!contactData) {
+      fetchContactData();
+    }
     Aos.init({once : true});
   }, [])
 
 
-  const [contactData, setContactData] = useState();
 
   async function fetchContactData() {
 

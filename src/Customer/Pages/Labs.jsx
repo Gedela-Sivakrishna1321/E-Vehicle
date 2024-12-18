@@ -16,10 +16,18 @@ const Labs = () => {
   const [active, setActive] = useState("College");
 
   React.useEffect(() => {
-    fetchLabsData();
-    fetchLabKeyFeaturesData();
-    fetchCollegeBenfitsData();
-    fetchStudentBenfitsData();
+    if(!labsData) {
+      fetchLabsData();
+    }
+    if(!keyFeatures) {
+      fetchLabKeyFeaturesData();
+    }
+    if(!collegeBenfits) {
+      fetchCollegeBenfitsData();
+    }
+    if(!studentBenfits) {
+      fetchStudentBenfitsData();
+    }
     Aos.init({once : true});
   }, [])
   

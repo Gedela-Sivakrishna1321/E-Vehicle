@@ -10,11 +10,14 @@ import { e_vehicles } from "../../../Data/E_vehicles";
 const HomePage = () => {
   // console.log("Vehicles Data - ", e_vehicles);
 
+  const [vehiclesData, setVehiclesData] = useState();
+
   useEffect(() => {
-    fetchE_VehiclesData();
+    if(!vehiclesData) {
+      fetchE_VehiclesData();
+    }
   },[])
 
-  const [vehiclesData, setVehiclesData] = useState();
 
   async function fetchE_VehiclesData() {
 

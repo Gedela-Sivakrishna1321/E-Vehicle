@@ -5,19 +5,21 @@ import { e_vehicles } from "../../Data/E_vehicles";
 import ProductTable from "../Components/ProductTable/ProductTable";
 import ReachUs from "../Components/ReachUs/ReachUs";
 import "../../index.css";
-import EmbedVideo from "../Components/EmbedVideo/EmbedVideo";
-import { VariableIcon } from "@heroicons/react/24/outline";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Oval } from "react-loader-spinner";
 import Loader from "../Components/Loader/Loader";
 
 const ProductPage = () => {
-  useEffect(() => {
-    fetchE_VehiclesData();
-  }, []);
 
   const [vehiclesData, setVehiclesData] = useState();
+  
+  useEffect(() => {
+    if(!vehiclesData) {
+      fetchE_VehiclesData();
+    }
+  }, []);
+
 
   async function fetchE_VehiclesData() {
     const res = await fetch(
