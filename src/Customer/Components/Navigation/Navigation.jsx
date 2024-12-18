@@ -257,6 +257,17 @@ export default function Navigation() {
                       Contact Us
                     </a>
 
+                  {/* About Us */}
+                    <a
+                      href="/about-us"
+                      className="-m-2 block p-2 sm:text-lg font-medium text-gray-900 removeBlueHighlight noSelect"
+                    >
+                      <img 
+                      className="h-[2rem] inline mx-4 "
+                      src="https://res.cloudinary.com/dxorxllhb/image/upload/v1734341092/User_Multiple_eda1pv.png" alt="" />
+                      About Us
+                    </a>
+
 
                   </div>
                 </div>
@@ -355,6 +366,13 @@ export default function Navigation() {
                         onClick={() => navigate("/contact-us")}
                       >
                         Contact Us
+                      </Button>}
+
+              {pathname !== "/about-us" &&        <Button
+                        className="text-xs sm:text-sm font-medium text-gray-700 hover:text-gray-800"
+                        onClick={() => navigate("/about-us")}
+                      >
+                        About Us
                       </Button>}
 
                     </div>
