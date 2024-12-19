@@ -49,7 +49,7 @@ const HomePage = () => {
       <MainCarousel />
 
       {/* <Suspense> */}
-        <HomeSectionCarousel data={data} />
+        <HomeSectionCarousel data={vehiclesData} />
       {/* </Suspense> */}
 
       {/* <div className=' p-5 sm:py-10 lg:py-20  lg:px-10 box-border '>
