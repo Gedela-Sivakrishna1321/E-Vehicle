@@ -8,12 +8,15 @@ import { e_vehicles } from "../../../Data/E_vehicles";
 // );
 
 const HomePage = () => {
-  // console.log("Vehicles Data - ", e_vehicles);
 
-  const [vehiclesData, setVehiclesData] = useState();
+  const [vehiclesData, setVehiclesData] = useState(null);
 
   useEffect(() => {
-    if(!vehiclesData) {
+    const cachedData = localStorage.getItem('vehiclesData');
+    if(cachedData) {
+      setVehiclesData(JSON.parse(cachedData));
+    }
+    else {
       fetchE_VehiclesData();
     }
   },[])
@@ -21,28 +24,25 @@ const HomePage = () => {
 
   async function fetchE_VehiclesData() {
 
-    const res = await fetch('https://script.google.com/macros/s/AKfycbxI-cslLCes1w3zzGuII1X60hb8VdVbI-Ut0IXKNAR0WcGUzRSC2aSTt9gWbg6KfEyS/exec?sheet=E_Vehicles');
+    try {
 
-    const data = await res.json();
+      const res = await fetch('https://script.google.com/macros/s/AKfycbxI-cslLCes1w3zzGuII1X60hb8VdVbI-Ut0IXKNAR0WcGUzRSC2aSTt9gWbg6KfEyS/exec?sheet=E_Vehicles');
+  
+      const data = await res.json();
+  
+      const formattedData = data.map((item) => ({
+        name: item.name,
+        urls: item.imageUrls.replace(/"/g, '').split(" "),
+      }));
+  
+      setVehiclesData(formattedData);
+      localStorage.setItem('vehiclesData', JSON.stringify(formattedData));
 
-    setVehiclesData(data);
+    } catch (error) {
+      console.error("Error fetching vehicles data:", error);
+    }
 
   }
-
-  // console.log("Vehicles Data - ", vehiclesData)
-  // console.log("Type = ", typeof(vehiclesData[0].imageUrls))
-
-  const data = [];
-
-  vehiclesData?.map((item) => {
-    const object = {};
-    object.name = item.name;
-    object.urls = item.imageUrls.replace(/"/g, '').split(" ");
-    data.push(object);
-  })
-
-  console.log("New Data Object = ", data);
-
   
   return (
     <div>
