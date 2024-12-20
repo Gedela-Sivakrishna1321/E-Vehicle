@@ -1,5 +1,6 @@
 {
   "name": "ev-app",
+  "homepage": "https://gte-mobility.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
