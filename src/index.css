@@ -125,10 +125,15 @@ code {
   border-radius: 10px;
 }
 
-/* To remove the blue highlight color on clicking on the links */
+/* To remove the blue highlight color on clicking on the links
 .removeBlueHighlight {
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+} */
+
+.removeBlueHighlight:active {
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 
 /* To remove the button shaking */
@@ -136,11 +141,14 @@ code {
   -webkit-backface-visibility: hidden;
 }
 
+/* Completely disable tap highlight */
+.removeBlueHighlight, .noSelect {
+  -webkit-tap-highlight-color: transparent; /* For Safari and Chrome */
+  tap-highlight-color: transparent;        /* For other browsers */
+}
+
+
 /* DrawBar bg */
 .drawbarBg {
   background-color: #fdfff5;
-}
-
-.noSelect {
-  -webkit-tap-highlight-color:rgba(255, 255, 255, 0.2);
 }
