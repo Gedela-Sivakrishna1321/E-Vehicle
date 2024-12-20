@@ -47,10 +47,10 @@ const ProductPage = () => {
 
   const tabs = vehiclesData?.map((item) => item.name);
   const CarouselData = vehiclesData?.filter((item) => item.name === activeTab);
-  console.log("Active Tab = ", activeTab);
-  console.log("tabs = ", tabs);
+  // console.log("Active Tab = ", activeTab);
+  // console.log("tabs = ", tabs);
   console.log("carousel data = ", CarouselData);
-  console.log("Vehicles Data = ", vehiclesData);
+  // console.log("Vehicles Data = ", vehiclesData);
 
   return (
     <div>
