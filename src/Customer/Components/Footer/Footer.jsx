@@ -5,6 +5,7 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css';
+import '../../../index.css'
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ const Footer = () => {
         {/* Footer Content */}
         <Grid item xs={12} className="pt-10">
           <div className="flex flex-col sm:flex-row gap-y-2 sm:justify-around uppercase tracking-wider sm:mx-9 text-sm sm:text-base">
-            <span onClick={() => navigate("/contact-us")} className="text-yellow-500 font-semibold cursor-pointer">
+            <span onClick={() => navigate("/contact-us")} className="text-yellow-500 font-semibold cursor-pointer removeBlueHighlight noSelect">
               Contact Us
             </span>
 
