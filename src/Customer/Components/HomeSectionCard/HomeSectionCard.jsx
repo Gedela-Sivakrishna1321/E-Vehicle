@@ -57,7 +57,7 @@ const HomeSectionCard = ({ product }) => {
               onClick={() => {
                 // console.log("Product Name - ", product.name);
                 
-                localStorage.setItem("checkProduct", product.name);
+                sessionStorage.setItem("checkProduct", product.name);
                 // console.log("LocalStorage Item Set  -- ", localStorage.getItem("checkProduct"));
                 navigate("/product");
               }}

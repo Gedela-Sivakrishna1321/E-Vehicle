@@ -13,8 +13,8 @@ const CoursePage = () => {
     const [courseData, setCourseData] = useState();
 
     useEffect(() => {
-        // Check if data exists in localStorage
-        const cachedData = localStorage.getItem('courseData');
+        // Check if data exists in sessionStorage
+        const cachedData = sessionStorage.getItem('courseData');
         if (cachedData) {
             // Use the cached data
             setCourseData(JSON.parse(cachedData));
@@ -22,42 +22,42 @@ const CoursePage = () => {
             // Fetch and cache data if not present
             fetchCourseData();
         }
-
+    
         Aos.init({ once: true, duration: 2000 });
     }, []);
-
+    
     async function fetchCourseData() {
         try {
             const res = await fetch(
                 "https://script.google.com/macros/s/AKfycbxI-cslLCes1w3zzGuII1X60hb8VdVbI-Ut0IXKNAR0WcGUzRSC2aSTt9gWbg6KfEyS/exec?sheet=Course_Data"
             );
-
+    
             const data = await res.json();
             const newData = transformData(data);
-
+    
             console.log('Transformed Data:', newData);
-
-            // Cache data in localStorage
-            localStorage.setItem('courseData', JSON.stringify(newData));
-
+    
+            // Cache data in sessionStorage
+            sessionStorage.setItem('courseData', JSON.stringify(newData));
+    
             // Update state
             setCourseData(newData);
         } catch (error) {
             console.error("Error fetching course data:", error);
         }
     }
-
+    
     function transformData(data) {
         const newData = [];
-
+    
         // Helper function to find course by title in the newData array
         function findCourse(title) {
             return newData.find(course => course.courseTitle === title);
         }
-
+    
         data.forEach(item => {
             let course = findCourse(item.courseTitle);
-
+    
             if (!course) {
                 course = {
                     courseTitle: item.courseTitle,
@@ -68,19 +68,19 @@ const CoursePage = () => {
                 };
                 newData.push(course);
             }
-
+    
             const module = {
                 index: item.index,
                 title: item.title.replace(/\"/g, ''),
                 contents: item.contents.split('+').map(content => content.replace(/\"/g, ''))
             };
-
+    
             course.modules.push(module);
         });
-
+    
         return newData;
     }
-
+    
     return (
         <div className='mt-20'>
             {/* Who Should Take This Course */}

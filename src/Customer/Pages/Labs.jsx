@@ -7,78 +7,73 @@ import 'aos/dist/aos.css';
 import Loader from "../Components/Loader/Loader";
 
 const Labs = () => {
-  const [labData, setLabData] = useState();
-  const [keyFeatures, setKeyFeatures] = useState();
-  const [collegeBenfits, setCollegeBenfits] = useState();
-  const [studentBenfits, setStudentBenfits] = useState();
+  const [labData, setLabData] = useState(
+    sessionStorage.getItem('labData') ? JSON.parse(sessionStorage.getItem('labData')) : null
+  );
+  const [keyFeatures, setKeyFeatures] = useState(
+    sessionStorage.getItem('keyFeatures') ? JSON.parse(sessionStorage.getItem('keyFeatures')) : null
+  );
+  const [collegeBenfits, setCollegeBenfits] = useState(
+    sessionStorage.getItem('collegeBenfits') ? JSON.parse(sessionStorage.getItem('collegeBenfits')) : null
+  );
+  const [studentBenfits, setStudentBenfits] = useState(
+    sessionStorage.getItem('studentBenfits') ? JSON.parse(sessionStorage.getItem('studentBenfits')) : null
+  );
   const [active, setActive] = useState("College");
-
+  
   useEffect(() => {
-    // Load cached data from localStorage
-    const cachedLabData = localStorage.getItem('labData');
-    const cachedKeyFeatures = localStorage.getItem('keyFeatures');
-    const cachedCollegeBenfits = localStorage.getItem('collegeBenfits');
-    const cachedStudentBenfits = localStorage.getItem('studentBenfits');
-
-    if (cachedLabData) setLabData(JSON.parse(cachedLabData));
-    else fetchLabsData();
-
-    if (cachedKeyFeatures) setKeyFeatures(JSON.parse(cachedKeyFeatures));
-    else fetchLabKeyFeaturesData();
-
-    if (cachedCollegeBenfits) setCollegeBenfits(JSON.parse(cachedCollegeBenfits));
-    else fetchCollegeBenfitsData();
-
-    if (cachedStudentBenfits) setStudentBenfits(JSON.parse(cachedStudentBenfits));
-    else fetchStudentBenfitsData();
-
+    if (!labData) fetchLabsData();
+    if (!keyFeatures) fetchLabKeyFeaturesData();
+    if (!collegeBenfits) fetchCollegeBenfitsData();
+    if (!studentBenfits) fetchStudentBenfitsData();
+  
     Aos.init({ once: true });
   }, []);
-
+  
   async function fetchLabsData() {
     try {
       const res = await fetch(`https://script.google.com/macros/s/AKfycbxI-cslLCes1w3zzGuII1X60hb8VdVbI-Ut0IXKNAR0WcGUzRSC2aSTt9gWbg6KfEyS/exec?sheet=Lab_Setup`);
       const data = await res.json();
-      localStorage.setItem('labData', JSON.stringify(data)); // Cache data
+      sessionStorage.setItem('labData', JSON.stringify(data)); // Save to sessionStorage
       setLabData(data);
     } catch (error) {
       console.error("Error fetching labs data:", error);
     }
   }
-
+  
   async function fetchLabKeyFeaturesData() {
     try {
       const res = await fetch(`https://script.google.com/macros/s/AKfycbxI-cslLCes1w3zzGuII1X60hb8VdVbI-Ut0IXKNAR0WcGUzRSC2aSTt9gWbg6KfEyS/exec?sheet=Lab_Key_Features`);
       const data = await res.json();
-      localStorage.setItem('keyFeatures', JSON.stringify(data)); // Cache data
+      sessionStorage.setItem('keyFeatures', JSON.stringify(data)); // Save to sessionStorage
       setKeyFeatures(data);
     } catch (error) {
       console.error("Error fetching key features data:", error);
     }
   }
-
+  
   async function fetchCollegeBenfitsData() {
     try {
       const res = await fetch('https://script.google.com/macros/s/AKfycbxI-cslLCes1w3zzGuII1X60hb8VdVbI-Ut0IXKNAR0WcGUzRSC2aSTt9gWbg6KfEyS/exec?sheet=Lab_College_Benfits');
       const data = await res.json();
-      localStorage.setItem('collegeBenfits', JSON.stringify(data)); // Cache data
+      sessionStorage.setItem('collegeBenfits', JSON.stringify(data)); // Save to sessionStorage
       setCollegeBenfits(data);
     } catch (error) {
       console.error("Error fetching college benefits data:", error);
     }
   }
-
+  
   async function fetchStudentBenfitsData() {
     try {
       const res = await fetch('https://script.google.com/macros/s/AKfycbxI-cslLCes1w3zzGuII1X60hb8VdVbI-Ut0IXKNAR0WcGUzRSC2aSTt9gWbg6KfEyS/exec?sheet=Lab_Student_Benfits');
       const data = await res.json();
-      localStorage.setItem('studentBenfits', JSON.stringify(data)); // Cache data
+      sessionStorage.setItem('studentBenfits', JSON.stringify(data)); // Save to sessionStorage
       setStudentBenfits(data);
     } catch (error) {
       console.error("Error fetching student benefits data:", error);
     }
   }
-
+  
   return (
     <div className="w-full">
       {/* Web Page Intro */}

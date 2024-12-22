@@ -59,7 +59,7 @@ const HomeSectionCarousel = ({ data }) => {
                             responsive={responsive}
                             renderNextButton={() => {
                                 return (
-                                    activeIndex < items.length - 1 && (
+                                    activeIndex < items?.length - 1 && (
                                         <Button
                                             variant="contained"
                                             className="z-50 bg-white carouselButton"

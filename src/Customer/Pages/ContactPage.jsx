@@ -10,20 +10,32 @@ const ContactPage = () => {
   const [contactData, setContactData] = useState(null);
 
   useEffect(() => {
-    const cachedData = localStorage.getItem('contactData');
+    // Check if the data is cached in sessionStorage
+    const cachedData = sessionStorage.getItem('contactData');
     if (cachedData) {
+      // If data exists in sessionStorage, set it to state
       setContactData(JSON.parse(cachedData));
     } else {
+      // If no cached data, fetch and store in sessionStorage
       fetchContactData();
     }
+
     Aos.init({ once: true });
   }, []);
 
   async function fetchContactData() {
-    const res = await fetch('https://script.google.com/macros/s/AKfycbxI-cslLCes1w3zzGuII1X60hb8VdVbI-Ut0IXKNAR0WcGUzRSC2aSTt9gWbg6KfEyS/exec?sheet=Contact_Details');
-    const data = await res.json();
-    setContactData(data);
-    localStorage.setItem('contactData', JSON.stringify(data));  // Store fetched data in localStorage
+    try {
+      const res = await fetch('https://script.google.com/macros/s/AKfycbxI-cslLCes1w3zzGuII1X60hb8VdVbI-Ut0IXKNAR0WcGUzRSC2aSTt9gWbg6KfEyS/exec?sheet=Contact_Details');
+      const data = await res.json();
+      
+      // Store fetched data in sessionStorage
+      sessionStorage.setItem('contactData', JSON.stringify(data));
+
+      // Set the fetched data to the component's state
+      setContactData(data);
+    } catch (error) {
+      console.error("Error fetching contact data:", error);
+    }
   }
 
   return (

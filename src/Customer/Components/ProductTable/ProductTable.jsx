@@ -16,16 +16,16 @@ import Loader from '../Loader/Loader';
 export default function ProductTable({ activeTab }) {
   const [vehiclesData, setVehiclesData] = React.useState(null);
 
-    useEffect(() => {
-    const cachedData = localStorage.getItem("vehiclesSpecsData");
-
+  useEffect(() => {
+    const cachedData = sessionStorage.getItem("vehiclesSpecsData");
+  
     if (cachedData) {
       setVehiclesData(JSON.parse(cachedData));
     } else {
       fetchE_VehiclesData();
     }
   }, []);
-
+  
   async function fetchE_VehiclesData() {
     try {
       const res = await fetch(
@@ -33,22 +33,22 @@ export default function ProductTable({ activeTab }) {
       );
       const data = await res.json();
       const newData = transformData(data);
-
+  
       setVehiclesData(newData);
-      localStorage.setItem("vehiclesSpecsData", JSON.stringify(newData)); // Save to localStorage
+      sessionStorage.setItem("vehiclesSpecsData", JSON.stringify(newData)); // Save to sessionStorage
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }
-
+  
   function transformData(data) {
     const result = [];
-
+  
     data.forEach((item) => {
       const cleanedName = item.name.replace(/"/g, "");
-
+  
       let vehicle = result.find((v) => v.name === cleanedName);
-
+  
       if (!vehicle) {
         vehicle = {
           name: cleanedName,
@@ -56,22 +56,23 @@ export default function ProductTable({ activeTab }) {
         };
         result.push(vehicle);
       }
-
+  
       vehicle.specs.push({ key: item.key, value: item.value });
     });
-
+  
     return result;
   }
-
+  
   React.useEffect(() => {
     Aos.init({ once: true });
   }, []);
-
+  
   const rows = vehiclesData
     ?.filter((item) => item.name === activeTab)[0]
     ?.specs;
-
-    console.log("Vehicles Data = ", vehiclesData);
+  
+  console.log("Vehicles Data = ", vehiclesData);
+  
 
   return (
     <div>

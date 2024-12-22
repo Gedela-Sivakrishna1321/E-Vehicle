@@ -10,17 +10,18 @@ import Loader from "../Components/Loader/Loader";
 
 const ProductPage = () => {
   const [vehiclesData, setVehiclesData] = useState(null);
-  const [activeTab, setActiveTab] = useState(localStorage.getItem("checkProduct") || "");
-
+  const [activeTab, setActiveTab] = useState(sessionStorage.getItem("checkProduct") || "");
+  
+  
   useEffect(() => {
-    const cachedData = localStorage.getItem("vehiclesData");
+    const cachedData = sessionStorage.getItem("vehiclesData");
     if (cachedData) {
       setVehiclesData(JSON.parse(cachedData));
     } else {
       fetchE_VehiclesData();
     }
   }, []);
-
+  
   async function fetchE_VehiclesData() {
     try {
       const res = await fetch(
@@ -32,25 +33,25 @@ const ProductPage = () => {
         urls: item.imageUrls.replace(/"/g, "").split(" "),
       }));
       setVehiclesData(formattedData);
-      localStorage.setItem("vehiclesData", JSON.stringify(formattedData));
+      sessionStorage.setItem("vehiclesData", JSON.stringify(formattedData));
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }
-
-  // Update activeTab in localStorage whenever it changes
+  
   useEffect(() => {
     if (activeTab) {
-      localStorage.setItem("checkProduct", activeTab);
+      sessionStorage.setItem("checkProduct", activeTab);
     }
   }, [activeTab]);
-
+  
   const tabs = vehiclesData?.map((item) => item.name);
   const CarouselData = vehiclesData?.filter((item) => item.name === activeTab);
-  // console.log("Active Tab = ", activeTab);
-  // console.log("tabs = ", tabs);
+  
+  console.log("Active Tab = ", activeTab);
+  console.log("tabs = ", tabs);
   console.log("carousel data = ", CarouselData);
-  // console.log("Vehicles Data = ", vehiclesData);
+  console.log("Vehicles Data = ", vehiclesData);
 
   return (
     <div>

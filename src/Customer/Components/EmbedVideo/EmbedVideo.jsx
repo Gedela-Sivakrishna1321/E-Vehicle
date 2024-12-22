@@ -8,18 +8,17 @@ import { Oval } from "react-loader-spinner";
 import Loader from "../Loader/Loader";
 
 const EmbedVideo =  () => {
-  const [youtubeLinksData, setYoutubeLinksData] = useState(null);
-
+  const [youtubeLinksData, setYoutubeLinksData] = useState(
+    sessionStorage.getItem('youtubeLinksData') ? JSON.parse(sessionStorage.getItem('youtubeLinksData')) : null
+  );
+  
   useEffect(() => {
-    const cachedData = localStorage.getItem('youtubeLinksData');
-    if (cachedData) {
-      setYoutubeLinksData(JSON.parse(cachedData));
-    } else {
+    if (!youtubeLinksData) {
       getData();
     }
     Aos.init({ duration: 2000 });
   }, []);
-
+  
   async function getData() {
     try {
       const res = await fetch(
@@ -27,12 +26,12 @@ const EmbedVideo =  () => {
       );
       const data = await res.json();
       setYoutubeLinksData(data);
-      localStorage.setItem('youtubeLinksData', JSON.stringify(data));  // Save to localStorage
+      sessionStorage.setItem('youtubeLinksData', JSON.stringify(data));  // Save to sessionStorage
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }
-
+  
   return (
     <div className="mt-10 mb-5">
       <div className="mx-auto flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-6">

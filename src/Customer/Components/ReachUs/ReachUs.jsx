@@ -11,7 +11,7 @@ const ReachUs = () => {
   const [contactData, setContactData] = useState();
 
   useEffect(() => {
-    const cachedData = localStorage.getItem('contactData');
+    const cachedData = sessionStorage.getItem('contactData');  // Use sessionStorage
     if (cachedData) {
       setContactData(JSON.parse(cachedData));
     } else {
@@ -19,19 +19,19 @@ const ReachUs = () => {
     }
     Aos.init();
   }, []);
-
+  
   async function fetchContactData() {
     try {
       const res = await fetch('https://script.google.com/macros/s/AKfycbxI-cslLCes1w3zzGuII1X60hb8VdVbI-Ut0IXKNAR0WcGUzRSC2aSTt9gWbg6KfEyS/exec?sheet=Contact_Details');
       const data = await res.json();
-
+  
       setContactData(data);
-      localStorage.setItem('contactData', JSON.stringify(data)); // Store data in localStorage
+      sessionStorage.setItem('contactData', JSON.stringify(data));  // Store data in sessionStorage
     } catch (error) {
       console.error("Error fetching contact data:", error);
     }
   }
-
+  
   return (
     <div>
       {

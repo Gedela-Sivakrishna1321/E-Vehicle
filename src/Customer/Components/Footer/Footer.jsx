@@ -10,32 +10,32 @@ import '../../../index.css'
 const Footer = () => {
   const navigate = useNavigate();
   const [contactData, setContactData] = useState(null);
-
+  
   useEffect(() => {
     // Initialize AOS library
     Aos.init({ once: true });
-
-    // Check localStorage for cached contact data
-    const cachedData = localStorage.getItem('contactData');
+  
+    // Check sessionStorage for cached contact data
+    const cachedData = sessionStorage.getItem('contactData');
     if (cachedData) {
       setContactData(JSON.parse(cachedData));
     } else {
       fetchContactData();
     }
   }, []);
-
+  
   async function fetchContactData() {
     try {
       const res = await fetch('https://script.google.com/macros/s/AKfycbxI-cslLCes1w3zzGuII1X60hb8VdVbI-Ut0IXKNAR0WcGUzRSC2aSTt9gWbg6KfEyS/exec?sheet=Contact_Details');
       const data = await res.json();
       setContactData(data);
-      // Cache the data in localStorage
-      localStorage.setItem('contactData', JSON.stringify(data));
+      // Cache the data in sessionStorage
+      sessionStorage.setItem('contactData', JSON.stringify(data));
     } catch (error) {
       console.error("Error fetching contact data:", error);
     }
   }
-
+  
   return (
     <div data-aos="fade-left">
       <Grid
